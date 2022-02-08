@@ -1,10 +1,13 @@
+// import { ThemeProvider } from "@react-navigation/native";
 import AppLoading from "expo-app-loading";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { ThemeProvider } from "styled-components";
 
 import useCachedResources from "./hooks/useCachedResources";
 import useColorScheme from "./hooks/useColorScheme";
 import Navigation from "./navigation";
+import theme from "./styles/theme";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -15,8 +18,10 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
+        <ThemeProvider theme={theme}>
+          <Navigation colorScheme={colorScheme} />
+          <StatusBar />
+        </ThemeProvider>
       </SafeAreaProvider>
     );
   }
