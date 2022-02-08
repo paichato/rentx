@@ -1,10 +1,27 @@
-import { FontAwesome } from '@expo/vector-icons';
-import * as Font from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect, useState } from 'react';
+import { FontAwesome } from "@expo/vector-icons";
+import * as Font from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect, useState } from "react";
+import {
+  useFonts,
+  Inter_400Regular,
+  Inter_500Medium,
+} from "@expo-google-fonts/inter";
+import {
+  Archivo_400Regular,
+  Archivo_500Medium,
+  Archivo_600SemiBold,
+} from "@expo-google-fonts/archivo";
 
 export default function useCachedResources() {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
+  const [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_500Medium,
+    Archivo_400Regular,
+    Archivo_500Medium,
+    Archivo_600SemiBold,
+  });
 
   // Load any resources or data that we need prior to rendering the app
   useEffect(() => {
@@ -13,10 +30,12 @@ export default function useCachedResources() {
         SplashScreen.preventAutoHideAsync();
 
         // Load fonts
-        await Font.loadAsync({
-          ...FontAwesome.font,
-          'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
-        });
+        if (fontsLoaded) {
+          await Font.loadAsync({
+            ...FontAwesome.font,
+            "space-mono": require("../assets/fonts/SpaceMono-Regular.ttf"),
+          });
+        }
       } catch (e) {
         // We might want to provide this error information to an error reporting service
         console.warn(e);
