@@ -1,5 +1,5 @@
 Arguments: 
-  /home/paichato/.nvm/versions/node/v16.11.1/bin/node /home/paichato/.yarn/bin/yarn.js add @types/styled-components/native -D
+  /home/paichato/.nvm/versions/node/v16.11.1/bin/node /home/paichato/.yarn/bin/yarn.js add @types/styled-components/native
 
 PATH: 
   /home/paichato/.yarn/bin:/home/paichato/.config/yarn/global/node_modules/.bin:/home/paichato/.yarn/bin:/home/paichato/.config/yarn/global/node_modules/.bin:/home/paichato/.nvm/versions/node/v16.11.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin

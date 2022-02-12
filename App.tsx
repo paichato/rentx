@@ -3,6 +3,7 @@ import AppLoading from "expo-app-loading";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { ThemeProvider } from "styled-components";
+// import { ThemeProvider } from "styled-components";
 
 import useCachedResources from "./hooks/useCachedResources";
 import useColorScheme from "./hooks/useColorScheme";
@@ -18,13 +19,13 @@ export default function App() {
     return <AppLoading />;
   } else {
     return (
-      <SafeAreaProvider>
-        <ThemeProvider theme={theme}>
-          {/* <Navigation colorScheme={colorScheme} /> */}
-          <Home />
-          <StatusBar />
-        </ThemeProvider>
-      </SafeAreaProvider>
+      // <SafeAreaProvider>
+      <ThemeProvider theme={theme}>
+        {/* <Navigation colorScheme={colorScheme} /> */}
+        <Home />
+        <StatusBar />
+      </ThemeProvider>
+      // </SafeAreaProvider>
     );
   }
 }
