@@ -50,25 +50,24 @@
     "react-test-renderer": "17.0.1",
     "typescript": "~4.3.5"
   },
-  "name": "@rentx-paichato/expo-template",
+  "name": "@paichato/expo-template",
   "description": "Expo template with svgTransformer, expoFonts, ReactNative responsive screens ",
   "keywords": [
     "expotemplate",
     "template"
   ],
-  "readmeFilename": "README.md",
   "license": "MIT",
   "homepage": "https://github.com/paichato/rentx",
   "repository": {
-    "url": "https://github.com/paichato/rentx",
+    "url": "git+https://github.com/paichato/rentx.git",
     "type": "git"
   },
-  "author": {
-    "name": "paichato",
-    "email": "tsenane14@gmail.com"
-  },
+  "author": "paichato <tsenane14@gmail.com>",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/paichato/rentx/issues"
   }
 }
