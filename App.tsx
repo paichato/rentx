@@ -17,6 +17,7 @@ import {
   Archivo_500Medium,
   Archivo_600SemiBold,
 } from "@expo-google-fonts/archivo";
+import CarDetails from "./screens/CarDetails";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -37,7 +38,8 @@ export default function App() {
       // <SafeAreaProvider>
       <ThemeProvider theme={theme}>
         {/* <Navigation colorScheme={colorScheme} /> */}
-        <Home />
+        {/* <Home /> */}
+        <CarDetails />
         <StatusBar />
       </ThemeProvider>
       // </SafeAreaProvider>
