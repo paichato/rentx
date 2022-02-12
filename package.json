@@ -56,8 +56,15 @@
     "expotemplate",
     "template"
   ],
+  "readmeFilename": "README.md",
+  "license": "MIT",
   "homepage": "https://github.com/paichato/rentx",
-  "repository": "https://github.com/paichato/rentx",
-  "author": "paichato"
-
+  "repository": {
+    "url": "https://github.com/paichato/rentx",
+    "type": "git"
+  },
+  "author": {
+    "name": "paichato",
+    "email": "tsenane14@gmail.com"
+  }
 }
