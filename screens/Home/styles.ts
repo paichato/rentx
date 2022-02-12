@@ -5,6 +5,7 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { RFValue } from "react-native-responsive-fontsize";
+import { FlatList } from "react-native";
 
 // import { withTheme } from "styled-components";
 
@@ -32,3 +33,10 @@ export const HeaderContent = styled.View`
   align-items: center;
   justify-content: space-between;
 `;
+
+export const CarList = styled(FlatList).attrs({
+  contentContainerStyle: {
+    padding: 24,
+  },
+  shosVerticalScrollIndicator: false,
+})``;

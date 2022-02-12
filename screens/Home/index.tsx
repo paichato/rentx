@@ -1,6 +1,6 @@
 import { View, Text, StatusBar } from "react-native";
 import React from "react";
-import { Container, Header, HeaderContent, TotalCars } from "./styles";
+import { CarList, Container, Header, HeaderContent, TotalCars } from "./styles";
 // import { StatusBar } from "expo-status-bar";
 import Logo from "../../assets/images/logo.svg";
 import { RFValue } from "react-native-responsive-fontsize";
@@ -8,11 +8,11 @@ import { Car } from "../../components/Car";
 
 export default function Home() {
   const carData = {
-    brand: "string",
-    name: "string",
+    brand: "Lamborghini",
+    name: "Urus",
     rent: {
       period: "string",
-      price: "number",
+      price: 23423,
     },
     thumbnail:
       "https://images.drive.com.au/driveau/image/upload/b_auto,c_fill_pad,f_auto,g_auto,h_169,q_auto:good,w_300/vehicles/redbook/AUVLAMB2021AEAI/S0008Z8P",
@@ -31,8 +31,13 @@ export default function Home() {
           <TotalCars>Total de 12 carros</TotalCars>
         </HeaderContent>
       </Header>
-      <Car data={carData} />
-      <Car data={carData} />
+      <CarList
+        data={[1, 2, 3]}
+        keyExtractor={(item) => String(item)}
+        renderItem={({ item }) => <Car data={carData} />}
+      />
+      {/* <Car data={carData} />
+      <Car data={carData} /> */}
     </Container>
   );
 }

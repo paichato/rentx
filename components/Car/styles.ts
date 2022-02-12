@@ -36,7 +36,7 @@ export const About = styled.View`
 export const Period = styled.Text`
   font-family: ${({ theme }) => theme.fonts.secondary_500};
   color: ${({ theme }) => theme.colors.text_detail};
-  font-size: ${RFValue(15)}px;
+  font-size: ${RFValue(10)}px;
   text-transform: uppercase;
 `;
 
@@ -47,7 +47,7 @@ export const Price = styled.Text`
 `;
 
 export const Rent = styled.View`
-  margin-right: 24px;
+  /* margin-right: 24px; */
 `;
 
 export const Type = styled.View``;
