@@ -19,6 +19,7 @@
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
     "@types/styled-components-react-native": "^5.1.3",
+    "axios": "^0.25.0",
     "expo": "~44.0.0",
     "expo-app-loading": "~1.3.0",
     "expo-asset": "~8.4.4",
@@ -49,5 +50,13 @@
     "react-test-renderer": "17.0.1",
     "typescript": "~4.3.5"
   },
+  "name": "@rentx-paichato/expo-template",
+  "description": "Expo template with svgTransformer, expoFonts, ReactNative responsive screens ",
+  "keywords": [
+    "expotemplate",
+    "template"
+  ],
+  "homepage": "https://github.com/paichato/rentx",
+  "repository": "https://github.com/paichato/rentx",
   "private": true
 }
