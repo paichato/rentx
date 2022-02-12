@@ -7,6 +7,7 @@ import { ThemeProvider } from "styled-components";
 import useCachedResources from "./hooks/useCachedResources";
 import useColorScheme from "./hooks/useColorScheme";
 import Navigation from "./navigation";
+import Home from "./screens/Home";
 import theme from "./styles/theme";
 
 export default function App() {
@@ -19,7 +20,8 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <ThemeProvider theme={theme}>
-          <Navigation colorScheme={colorScheme} />
+          {/* <Navigation colorScheme={colorScheme} /> */}
+          <Home />
           <StatusBar />
         </ThemeProvider>
       </SafeAreaProvider>
