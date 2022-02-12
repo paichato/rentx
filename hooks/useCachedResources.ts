@@ -1,3 +1,5 @@
+//ignore this file focus on the App.tsx
+
 import { FontAwesome } from "@expo/vector-icons";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -15,7 +17,7 @@ import {
 
 export default function useCachedResources() {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
-  const [fontsLoaded] = useFonts({
+  let [fontsLoaded] = useFonts({
     Inter_400Regular,
     Inter_500Medium,
     Archivo_400Regular,
@@ -27,7 +29,9 @@ export default function useCachedResources() {
   useEffect(() => {
     async function loadResourcesAndDataAsync() {
       try {
-        SplashScreen.preventAutoHideAsync();
+        if (!fontsLoaded) {
+          SplashScreen.preventAutoHideAsync();
+        }
 
         // Load fonts
         if (fontsLoaded) {
