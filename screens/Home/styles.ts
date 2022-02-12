@@ -14,6 +14,6 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   width: 100%;
-  height: ${hp("20%")};
+  height: ${hp("20%")}px;
   background-color: ${({ theme }) => theme.colors.header};
 `;

@@ -2,7 +2,7 @@
 import AppLoading from "expo-app-loading";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components/native";
 // import { ThemeProvider } from "styled-components";
 
 import useCachedResources from "./hooks/useCachedResources";
