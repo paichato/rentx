@@ -15,17 +15,31 @@ import {
 
 import GasolineIcon from "../../assets/images/gasoline.svg";
 
-export function Car() {
+interface CarData {
+  brand: string;
+  name: string;
+  rent: {
+    period: string;
+    price: number;
+  };
+  thumbnail: string;
+}
+
+interface Props {
+  data: CarData;
+}
+
+export function Car({ data }: Props) {
   return (
     <Container>
       <Details>
-        <Brand>Audi</Brand>
-        <Name>Coupe</Name>
+        <Brand>{data.brand}</Brand>
+        <Name>{data.name}</Name>
 
         <About>
           <Rent>
-            <Period>123</Period>
-            <Price>9863</Price>
+            <Period>{`RS${data.rent.period}`}</Period>
+            <Price>{`RS${data.rent.price}`}</Price>
           </Rent>
 
           <Type>
@@ -34,7 +48,12 @@ export function Car() {
         </About>
       </Details>
 
-      <CarImage source={{ uri: "" }} />
+      <CarImage
+        resizeMode="contain"
+        source={{
+          uri: data.thumbnail,
+        }}
+      />
     </Container>
   );
 }

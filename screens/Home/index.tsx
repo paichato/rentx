@@ -7,6 +7,17 @@ import { RFValue } from "react-native-responsive-fontsize";
 import { Car } from "../../components/Car";
 
 export default function Home() {
+  const carData = {
+    brand: "string",
+    name: "string",
+    rent: {
+      period: "string",
+      price: "number",
+    },
+    thumbnail:
+      "https://images.drive.com.au/driveau/image/upload/b_auto,c_fill_pad,f_auto,g_auto,h_169,q_auto:good,w_300/vehicles/redbook/AUVLAMB2021AEAI/S0008Z8P",
+  };
+
   return (
     <Container>
       <StatusBar
@@ -20,7 +31,8 @@ export default function Home() {
           <TotalCars>Total de 12 carros</TotalCars>
         </HeaderContent>
       </Header>
-      <Car />
+      <Car data={carData} />
+      <Car data={carData} />
     </Container>
   );
 }
