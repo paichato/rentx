@@ -1,6 +1,6 @@
 import { View, Text, StatusBar } from "react-native";
 import React from "react";
-import { Container, Header } from "./styles";
+import { CarImages, Container, Header } from "./styles";
 import { BackButton } from "../../components/BackButton";
 import ImagesSlider from "../../components/ImagesSlider";
 
@@ -11,7 +11,9 @@ export default function CarDetails() {
       <Header>
         <BackButton />
       </Header>
-      <ImagesSlider />
+      <CarImages>
+        <ImagesSlider />
+      </CarImages>
     </Container>
   );
 }
