@@ -18,3 +18,34 @@ export const Header = styled.View`
 export const CarImages = styled.View`
   margin-top: ${getStatusBarHeight() + 32}px;
 `;
+
+export const Content = styled.View`
+  margin-top: ${getStatusBarHeight() + 32}px;
+`;
+
+export const Description = styled.View`
+  margin-top: ${getStatusBarHeight() + 32}px;
+`;
+
+export const Details = styled.View`
+  margin-top: ${getStatusBarHeight() + 32}px;
+`;
+
+export const Brand = styled.Text`
+  margin-top: ${getStatusBarHeight() + 32}px;
+`;
+export const Name = styled.Text`
+  margin-top: ${getStatusBarHeight() + 32}px;
+`;
+
+export const Rent = styled.View`
+  margin-top: ${getStatusBarHeight() + 32}px;
+`;
+
+export const Period = styled.View`
+  margin-top: ${getStatusBarHeight() + 32}px;
+`;
+
+export const Price = styled.View`
+  margin-top: ${getStatusBarHeight() + 32}px;
+`;
