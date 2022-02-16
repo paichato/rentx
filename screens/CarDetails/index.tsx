@@ -1,6 +1,7 @@
 import { View, Text, StatusBar } from "react-native";
 import React from "react";
 import {
+  About,
   Brand,
   CarImages,
   Container,
@@ -37,6 +38,7 @@ export default function CarDetails() {
             <Price>R$12123</Price>
           </Rent>
         </Details>
+        <About>Este e um automovel Na na na etc etc you know how we do</About>
       </Content>
     </Container>
   );

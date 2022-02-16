@@ -29,7 +29,7 @@ export const Content = styled.ScrollView.attrs({
 })``;
 
 export const Description = styled.View`
-  margin-top: ${getStatusBarHeight() + 32}px;
+  /* margin-top: ${getStatusBarHeight() + 32}px; */
 `;
 
 export const Details = styled.View`
@@ -67,4 +67,13 @@ export const Price = styled.Text`
   font-family: ${({ theme }) => theme.fonts.primary_500};
   color: ${({ theme }) => theme.colors.main};
   font-size: ${RFValue(25)}px;
+`;
+
+export const About = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.primary_400};
+  color: ${({ theme }) => theme.colors.text};
+  font-size: ${RFValue(15)}px;
+  text-align: justify;
+  width: 100%;
+  margin-top: 24px;
 `;

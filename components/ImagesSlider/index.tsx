@@ -29,7 +29,6 @@ export default function ImagesSlider() {
           }}
         />
       </CarImageWrapper>
-      <Text>ImagesSlider</Text>
     </Container>
   );
 }
