@@ -26,7 +26,9 @@ export const Content = styled.ScrollView.attrs({
     alignItems: "center",
   },
   showsVerticalScrollIndicator: false,
-})``;
+})`
+  width: 100%;
+`;
 
 export const Description = styled.View`
   /* margin-top: ${getStatusBarHeight() + 32}px; */
@@ -76,4 +78,13 @@ export const About = styled.Text`
   text-align: justify;
   width: 100%;
   margin-top: 24px;
+`;
+
+export const Acessories = styled.View`
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: ${RFValue(16)}px;
 `;
