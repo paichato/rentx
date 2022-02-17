@@ -2,9 +2,11 @@ import { View, Text } from "react-native";
 import React from "react";
 import {
   Container,
+  Content,
   DateInfo,
   DateTitle,
   DateValue,
+  Footer,
   Header,
   RentalPeriod,
   Title,
@@ -12,6 +14,7 @@ import {
 import { BackButton } from "../../components/BackButton";
 import { useTheme } from "styled-components";
 import ArrowIcon from "../../assets/images/arrow.svg";
+import Button from "../../components/Button";
 
 export default function Scheduling() {
   const theme = useTheme();
@@ -34,6 +37,10 @@ export default function Scheduling() {
           </DateInfo>
         </RentalPeriod>
       </Header>
+      <Content></Content>
+      <Footer>
+        <Button title="Confirmar" />
+      </Footer>
     </Container>
   );
 }

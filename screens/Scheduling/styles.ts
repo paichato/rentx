@@ -55,3 +55,14 @@ export const DateTitle = styled.Text`
   font-family: ${({ theme }) => theme.fonts.secondary_500};
   font-size: ${RFValue(10)}px;
 `;
+
+export const Content = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    paddingBottom: 24,
+  },
+  showsVerticalIndicator: false,
+})``;
+
+export const Footer = styled.View`
+  padding: 24px;
+`;
