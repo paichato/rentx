@@ -31,6 +31,9 @@ export const Content = styled.ScrollView.attrs({
   showsVerticalScrollIndicator: false,
 })`
   width: 100%;
+  /* height: 200px; */
+  /* background-color: red; */
+  /* flex: 1; */
 `;
 
 export const Description = styled.View`

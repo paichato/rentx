@@ -15,6 +15,7 @@ import { BackButton } from "../../components/BackButton";
 import { useTheme } from "styled-components";
 import ArrowIcon from "../../assets/images/arrow.svg";
 import Button from "../../components/Button";
+import { Calendar } from "../../components/Calendar";
 
 export default function Scheduling() {
   const theme = useTheme();
@@ -37,7 +38,9 @@ export default function Scheduling() {
           </DateInfo>
         </RentalPeriod>
       </Header>
-      <Content></Content>
+      <Content>
+        <Calendar />
+      </Content>
       <Footer>
         <Button title="Confirmar" />
       </Footer>

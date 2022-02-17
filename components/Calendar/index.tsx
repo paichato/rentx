@@ -1,10 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
+import { Container } from "./styles";
+import { Calendar as CustomCalendar } from "react-native-calendars";
 
 export function Calendar() {
   return (
-    <View>
-      <Text>Calendar</Text>
-    </View>
+    <Container>
+      <CustomCalendar />
+    </Container>
   );
 }
