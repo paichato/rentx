@@ -13,16 +13,17 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   width: 100%;
-  height: 325px;
+  height: ${RFValue(325)}px;
   justify-content: center;
-  padding: 25px;
+  padding: ${RFValue(25)}px;
   background-color: ${({ theme }) => theme.colors.header};
+  padding-top: ${getStatusBarHeight() + RFValue(10)}px;
 `;
 export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.shape};
   font-family: ${({ theme }) => theme.fonts.secondary_600};
   font-size: ${RFValue(34)}px;
-  margin-top: 24px;
+  margin-top: 10px;
 `;
 
 export const RentalPeriod = styled.View`
@@ -30,18 +31,26 @@ export const RentalPeriod = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
+  /* margin: 10px 0; */
 `;
 export const DateInfo = styled.View`
   width: 30%;
 `;
-export const DateValue = styled.Text`
+export const DateValue = styled.Text<DateValueProps>`
   color: ${({ theme }) => theme.colors.shape};
   font-family: ${({ theme }) => theme.fonts.primary_500};
   font-size: ${RFValue(15)}px;
 
-  ${({ selected, theme }) => !selected && css``}
+  ${({ selected, theme }) =>
+    !selected &&
+    css`
+      border-bottom-width: 1px;
+      border-bottom-color: ${({ theme }) => theme.colors.text};
+      padding-bottom: 5px;
+    `}
 `;
-export const DateTitle = styled.Text<DateValueProps>`
+export const DateTitle = styled.Text`
   color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.fonts.secondary_500};
   font-size: ${RFValue(10)}px;

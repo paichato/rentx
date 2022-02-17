@@ -25,12 +25,12 @@ export default function Scheduling() {
         <RentalPeriod>
           <DateInfo>
             <DateTitle>De</DateTitle>
-            <DateValue>18 de Junho de 2021</DateValue>
+            <DateValue selected={false}>18 de Junho de 2021</DateValue>
           </DateInfo>
           <ArrowIcon />
           <DateInfo>
             <DateTitle>De</DateTitle>
-            <DateValue>18 de Junho de 2021</DateValue>
+            <DateValue selected={true}>18 de Junho de 2021</DateValue>
           </DateInfo>
         </RentalPeriod>
       </Header>
