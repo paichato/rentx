@@ -9,6 +9,7 @@ import {
   Content,
   Description,
   Details,
+  Footer,
   Header,
   Name,
   Period,
@@ -25,6 +26,7 @@ import ForceSvg from "../../assets/images/force.svg";
 import GasolineSvg from "../../assets/images/gasoline.svg";
 import ExchangeSvg from "../../assets/images/exchange.svg";
 import PeopleSvg from "../../assets/images/people.svg";
+import Button from "../../components/Button";
 
 export default function CarDetails() {
   return (
@@ -57,6 +59,9 @@ export default function CarDetails() {
         </Acessories>
         <About>Este e um automovel Na na na etc etc you know how we do</About>
       </Content>
+      <Footer>
+        <Button title="continuar" color="" />
+      </Footer>
     </Container>
   );
 }
