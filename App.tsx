@@ -18,6 +18,7 @@ import {
   Archivo_600SemiBold,
 } from "@expo-google-fonts/archivo";
 import CarDetails from "./screens/CarDetails";
+import Scheduling from "./screens/Scheduling";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -39,8 +40,9 @@ export default function App() {
       <ThemeProvider theme={theme}>
         {/* <Navigation colorScheme={colorScheme} /> */}
         {/* <Home /> */}
-        <CarDetails />
-        <StatusBar />
+        {/* <CarDetails /> */}
+        {/* <StatusBar /> */}
+        <Scheduling />
       </ThemeProvider>
       // </SafeAreaProvider>
     );
