@@ -19,6 +19,7 @@ import {
 } from "@expo-google-fonts/archivo";
 import CarDetails from "./screens/CarDetails";
 import Scheduling from "./screens/Scheduling";
+import SchedulingDetails from "./screens/SchedulingDetails";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -42,7 +43,8 @@ export default function App() {
         {/* <Home /> */}
         {/* <CarDetails /> */}
         {/* <StatusBar /> */}
-        <Scheduling />
+        {/* <Scheduling /> */}
+        <SchedulingDetails />
       </ThemeProvider>
       // </SafeAreaProvider>
     );
