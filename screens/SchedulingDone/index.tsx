@@ -1,4 +1,4 @@
-import { View, Text, useWindowDimensions } from "react-native";
+import { View, Text, useWindowDimensions, StatusBar } from "react-native";
 import React from "react";
 import { Container, Content, Title, Message, Footer } from "./styles";
 
@@ -12,6 +12,7 @@ export default function SchedulingDone() {
 
   return (
     <Container>
+      <StatusBar translucent backgroundColor={"transparent"} />
       <LogoSvg width={width} />
       <Content>
         <DoneSvg width={80} height={80} />
