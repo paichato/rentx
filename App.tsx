@@ -1,4 +1,5 @@
 // import { ThemeProvider } from "@react-navigation/native";
+import "react-native-gesture-handler";
 import AppLoading from "expo-app-loading";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
