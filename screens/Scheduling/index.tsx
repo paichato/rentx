@@ -14,11 +14,17 @@ import {
 import { BackButton } from "../../components/BackButton";
 import { useTheme } from "styled-components";
 import ArrowIcon from "../../assets/images/arrow.svg";
-import Button from "../../components/Button";
+// import Button from "../../components/Button";
 import { Calendar } from "../../components/Calendar";
+import { Button } from "../../components/Button";
 
-export default function Scheduling() {
+export default function Scheduling({ navigation }: any) {
   const theme = useTheme();
+
+  const handleConfirm = () => {
+    navigation.navigate("SchedulingDetails");
+  };
+
   return (
     <Container>
       <Header>
@@ -42,7 +48,7 @@ export default function Scheduling() {
         <Calendar />
       </Content>
       <Footer>
-        <Button title="Confirmar" />
+        <Button onPress={handleConfirm} title="Confirmar" />
       </Footer>
     </Container>
   );

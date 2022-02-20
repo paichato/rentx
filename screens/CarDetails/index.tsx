@@ -26,9 +26,14 @@ import ForceSvg from "../../assets/images/force.svg";
 import GasolineSvg from "../../assets/images/gasoline.svg";
 import ExchangeSvg from "../../assets/images/exchange.svg";
 import PeopleSvg from "../../assets/images/people.svg";
-import Button from "../../components/Button";
+import { Button } from "../../components/Button";
 
-export default function CarDetails() {
+export default function CarDetails({ navigation }: any) {
+  const handleContinue = () => {
+    console.log("hello");
+    navigation.navigate("Scheduling");
+  };
+
   return (
     <Container>
       <StatusBar barStyle="dark-content" />
@@ -60,7 +65,11 @@ export default function CarDetails() {
         <About>Este e um automovel Na na na etc etc you know how we do</About>
       </Content>
       <Footer>
-        <Button title="continuar" color="" />
+        <Button
+          onPress={handleContinue}
+          title="Escolher periodo de aluguer"
+          color=""
+        />
       </Footer>
     </Container>
   );

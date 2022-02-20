@@ -36,13 +36,17 @@ import ForceSvg from "../../assets/images/force.svg";
 import GasolineSvg from "../../assets/images/gasoline.svg";
 import ExchangeSvg from "../../assets/images/exchange.svg";
 import PeopleSvg from "../../assets/images/people.svg";
-import Button from "../../components/Button";
+import { Button } from "../../components/Button";
 import { Feather } from "@expo/vector-icons";
 import { RFValue } from "react-native-responsive-fontsize";
 import { useTheme } from "styled-components";
 
-export default function SchedulingDetails() {
+export default function SchedulingDetails({ navigation }: any) {
   const theme = useTheme();
+
+  const handleConfirm = () => {
+    navigation.navigate("SchedulingDone");
+  };
 
   return (
     <Container>
@@ -103,7 +107,11 @@ export default function SchedulingDetails() {
         </RentalPrice>
       </Content>
       <Footer>
-        <Button title="continuar" color="" />
+        <Button
+          onPress={handleConfirm}
+          title="Alugar agora"
+          color={theme.colors.sucess}
+        />
       </Footer>
     </Container>
   );

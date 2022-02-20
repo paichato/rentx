@@ -7,8 +7,12 @@ import DoneSvg from "../../assets/images/done.svg";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import ConfirmButton from "../../components/ConfirmButton";
 
-export default function SchedulingDone() {
+export default function SchedulingDone({ navigation }: any) {
   const { width } = useWindowDimensions();
+
+  const handleOk = () => {
+    navigation.navigate("Home");
+  };
 
   return (
     <Container>
@@ -23,7 +27,7 @@ export default function SchedulingDone() {
         </Message>
       </Content>
       <Footer>
-        <ConfirmButton title="OK" />
+        <ConfirmButton onPress={handleOk} title="OK" />
       </Footer>
     </Container>
   );
