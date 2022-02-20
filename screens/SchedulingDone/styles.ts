@@ -10,6 +10,7 @@ export const Content = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+  padding-bottom: 70px;
 `;
 export const Title = styled.Text`
   font-size: ${RFValue(30)}px;
@@ -24,4 +25,10 @@ export const Message = styled.Text`
   text-align: center;
   margin-top: 16px;
   line-height: 25px;
+`;
+
+export const Footer = styled.View`
+  width: 100%;
+  align-items: center;
+  margin: 80px 0px;
 `;
