@@ -20,6 +20,7 @@ import {
 import CarDetails from "./screens/CarDetails";
 import Scheduling from "./screens/Scheduling";
 import SchedulingDetails from "./screens/SchedulingDetails";
+import SchedulingDone from "./screens/SchedulingDone";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -44,7 +45,8 @@ export default function App() {
         {/* <CarDetails /> */}
         {/* <StatusBar /> */}
         {/* <Scheduling /> */}
-        <SchedulingDetails />
+        {/* <SchedulingDetails /> */}
+        <SchedulingDone />
       </ThemeProvider>
       // </SafeAreaProvider>
     );
