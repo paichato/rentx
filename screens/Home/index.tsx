@@ -5,8 +5,9 @@ import { CarList, Container, Header, HeaderContent, TotalCars } from "./styles";
 import Logo from "../../assets/images/logo.svg";
 import { RFValue } from "react-native-responsive-fontsize";
 import { Car } from "../../components/Car";
+import { NavigationProp } from "@react-navigation/native";
 
-export default function Home() {
+export default function Home({ navigation }: any) {
   const carData = {
     brand: "Lamborghini",
     name: "Urus",
@@ -17,6 +18,10 @@ export default function Home() {
     thumbnail:
       "https://images.drive.com.au/driveau/image/upload/b_auto,c_fill_pad,f_auto,g_auto,h_169,q_auto:good,w_300/vehicles/redbook/AUVLAMB2021AEAI/S0008Z8P",
   };
+
+  function handleCarlSelection() {
+    navigation.navigate("CarDetails");
+  }
 
   return (
     <Container>
@@ -34,7 +39,9 @@ export default function Home() {
       <CarList
         data={[1, 2, 3]}
         keyExtractor={(item) => String(item)}
-        renderItem={({ item }) => <Car data={carData} />}
+        renderItem={({ item }) => (
+          <Car onPress={handleCarlSelection} data={carData} />
+        )}
       />
       {/* <Car data={carData} />
       <Car data={carData} /> */}

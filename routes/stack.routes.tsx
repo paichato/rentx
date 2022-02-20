@@ -13,7 +13,7 @@ export function StackRoutes() {
   return (
     <Navigator screenOptions={{ headerShown: false }}>
       <Screen name="Home" component={Home} />
-      <Screen name="CardDetails" component={CarDetails} />
+      <Screen name="CarDetails" component={CarDetails} />
       <Screen name="Scheduling" component={Scheduling} />
       <Screen name="SchedulingDetails" component={SchedulingDetails} />
       <Screen name="SchedulingDone" component={SchedulingDone} />

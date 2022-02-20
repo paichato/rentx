@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacityProps } from "react-native";
 import React from "react";
 import {
   About,
@@ -25,13 +25,13 @@ interface CarData {
   thumbnail: string;
 }
 
-interface Props {
+interface Props extends TouchableOpacityProps {
   data: CarData;
 }
 
-export function Car({ data }: Props) {
+export function Car({ data, ...rest }: Props) {
   return (
-    <Container>
+    <Container {...rest}>
       <Details>
         <Brand>{data.brand}</Brand>
         <Name>{data.name}</Name>
