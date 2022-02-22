@@ -34,11 +34,15 @@ export default function CarDetails({ navigation }: any) {
     navigation.navigate("Scheduling");
   };
 
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <Container>
       <StatusBar barStyle="dark-content" />
       <Header>
-        <BackButton />
+        <BackButton onPress={handleGoBack} />
       </Header>
       <CarImages>
         <ImagesSlider />
