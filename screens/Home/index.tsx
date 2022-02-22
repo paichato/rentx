@@ -7,9 +7,10 @@ import { RFValue } from "react-native-responsive-fontsize";
 import { Car } from "../../components/Car";
 import { NavigationProp } from "@react-navigation/native";
 import api from "../../services/api";
+import { carDTO } from "../../dtos/carsDTOS";
 
 export default function Home({ navigation }: any) {
-  const [cars, setCars] = useState([]);
+  const [cars, setCars] = useState<carDTO>([]);
   const [loading, setLoading] = useState(true);
 
   function handleCarlSelection() {
@@ -24,7 +25,10 @@ export default function Home({ navigation }: any) {
           console.log(res.data);
           setCars(res.data);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
+        .finally(() => {
+          setLoading(false);
+        });
     };
 
     getCars();
@@ -44,10 +48,10 @@ export default function Home({ navigation }: any) {
         </HeaderContent>
       </Header>
       <CarList
-        data={[1, 2, 3]}
+        data={cars}
         keyExtractor={(item) => String(item)}
         renderItem={({ item }) => (
-          <Car onPress={handleCarlSelection} data={cars} />
+          <Car onPress={handleCarlSelection} data={item} />
         )}
       />
       {/* <Car data={carData} />
