@@ -27,8 +27,17 @@ import GasolineSvg from "../../assets/images/gasoline.svg";
 import ExchangeSvg from "../../assets/images/exchange.svg";
 import PeopleSvg from "../../assets/images/people.svg";
 import { Button } from "../../components/Button";
+import { carDTO } from "../../dtos/carsDTOS";
 
-export default function CarDetails({ navigation }: any) {
+interface Params {
+  car: carDTO;
+}
+
+export default function CarDetails({ navigation, route }: any) {
+  const { car } = route.params as Params;
+
+  console.log(car);
+
   const handleContinue = () => {
     console.log("hello");
     navigation.navigate("Scheduling");
@@ -45,28 +54,35 @@ export default function CarDetails({ navigation }: any) {
         <BackButton onPress={handleGoBack} />
       </Header>
       <CarImages>
-        <ImagesSlider />
+        <ImagesSlider imagesUrl={car.photos} />
       </CarImages>
       <Content>
         <Details>
           <Description>
-            <Brand>Lambo</Brand>
-            <Name>Hurr</Name>
+            <Brand>{car.brand}</Brand>
+            <Name>{car.name}</Name>
           </Description>
           <Rent>
-            <Period>Ao dia</Period>
-            <Price>R$12123</Price>
+            <Period>{car.rent.period}</Period>
+            <Price>{"R$" + car.rent.price}</Price>
           </Rent>
         </Details>
         <Acessories>
-          <Acessory name="380Km/h" icon={SpeedSvg} />
+          {car.accessories.map((accessory) => (
+            <Acessory
+              key={accessory.type}
+              name={accessory.name}
+              icon={SpeedSvg}
+            />
+          ))}
+          {/* <Acessory name="380Km/h" icon={SpeedSvg} />
           <Acessory name="3.2s" icon={AccelarationSvg} />
           <Acessory name="800 HP" icon={ForceSvg} />
           <Acessory name="Gasolina" icon={GasolineSvg} />
           <Acessory name="Auto" icon={ExchangeSvg} />
-          <Acessory name="2 pessoas" icon={PeopleSvg} />
+          <Acessory name="2 pessoas" icon={PeopleSvg} /> */}
         </Acessories>
-        <About>Este e um automovel Na na na etc etc you know how we do</About>
+        <About>{car.about}</About>
       </Content>
       <Footer>
         <Button

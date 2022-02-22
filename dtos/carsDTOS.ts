@@ -10,7 +10,7 @@ export interface carDTO {
 
   fuel_type: string;
   thumbnail: string;
-  acessories: {
+  accessories: {
     type: string;
     name: string;
   }[];

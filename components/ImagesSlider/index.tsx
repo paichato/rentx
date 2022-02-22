@@ -13,7 +13,7 @@ interface Props {
   imagesUrl: string[];
 }
 
-export default function ImagesSlider() {
+export default function ImagesSlider({ imagesUrl }: Props) {
   return (
     <Container>
       <ImageIndexes>
@@ -25,7 +25,7 @@ export default function ImagesSlider() {
       <CarImageWrapper>
         <CarImage
           source={{
-            uri: "https://images.drive.com.au/driveau/image/upload/b_auto,c_fill_pad,f_auto,g_auto,h_169,q_auto:good,w_300/vehicles/redbook/AUVLAMB2021AEAI/S0008Z8P",
+            uri: imagesUrl[0],
           }}
         />
       </CarImageWrapper>

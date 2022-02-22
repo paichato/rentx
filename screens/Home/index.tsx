@@ -11,11 +11,11 @@ import { carDTO } from "../../dtos/carsDTOS";
 import { Loader } from "../../components/Loader";
 
 export default function Home({ navigation }: any) {
-  const [cars, setCars] = useState<carDTO>([]);
+  const [cars, setCars] = useState<carDTO>();
   const [loading, setLoading] = useState(true);
 
-  function handleCarlSelection() {
-    navigation.navigate("CarDetails");
+  function handleCarlSelection(car: carDTO) {
+    navigation.navigate("CarDetails", { car });
   }
 
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function Home({ navigation }: any) {
           data={cars}
           keyExtractor={(item) => String(item)}
           renderItem={({ item }) => (
-            <Car onPress={handleCarlSelection} data={item} />
+            <Car onPress={() => handleCarlSelection(item)} data={item} />
           )}
         />
       )}
