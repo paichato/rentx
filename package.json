@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "api": "json-server ./services/server.json --host 192.168.18.5 3333 --delay 700"
   },
   "jest": {
     "preset": "jest-expo"
