@@ -14,6 +14,7 @@ import {
 } from "./styles";
 
 import GasolineIcon from "../../assets/images/gasoline.svg";
+import { carDTO } from "../../dtos/carsDTOS";
 
 interface CarData {
   brand: string;
@@ -26,7 +27,7 @@ interface CarData {
 }
 
 interface Props extends TouchableOpacityProps {
-  data: CarData;
+  data: carDTO;
 }
 
 export function Car({ data, ...rest }: Props) {

@@ -8,6 +8,7 @@ import { Car } from "../../components/Car";
 import { NavigationProp } from "@react-navigation/native";
 import api from "../../services/api";
 import { carDTO } from "../../dtos/carsDTOS";
+import { Loader } from "../../components/Loader";
 
 export default function Home({ navigation }: any) {
   const [cars, setCars] = useState<carDTO>([]);
@@ -34,6 +35,10 @@ export default function Home({ navigation }: any) {
     getCars();
   }, []);
 
+  // if (loading) {
+  //   return <Loader />;
+  // }
+
   return (
     <Container>
       <StatusBar
@@ -47,13 +52,18 @@ export default function Home({ navigation }: any) {
           <TotalCars>Total de 12 carros</TotalCars>
         </HeaderContent>
       </Header>
-      <CarList
-        data={cars}
-        keyExtractor={(item) => String(item)}
-        renderItem={({ item }) => (
-          <Car onPress={handleCarlSelection} data={item} />
-        )}
-      />
+      {loading ? (
+        <Loader />
+      ) : (
+        <CarList
+          data={cars}
+          keyExtractor={(item) => String(item)}
+          renderItem={({ item }) => (
+            <Car onPress={handleCarlSelection} data={item} />
+          )}
+        />
+      )}
+
       {/* <Car data={carData} />
       <Car data={carData} /> */}
     </Container>
