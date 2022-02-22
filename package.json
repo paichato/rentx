@@ -7,7 +7,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest --watchAll",
-    "api": "json-server ./services/server.json --host 192.168.18.5 3333 --delay 700"
+    "api": "json-server ./services/server.json --host 192.168.18.5 --port 3333 --delay 700"
   },
   "jest": {
     "preset": "jest-expo"
