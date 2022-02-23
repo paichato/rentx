@@ -20,14 +20,15 @@ import { BackButton } from "../../components/BackButton";
 import ImagesSlider from "../../components/ImagesSlider";
 import { Acessory } from "../../components/Acessory";
 
-import SpeedSvg from "../../assets/images/speed.svg";
-import AccelarationSvg from "../../assets/images/acceleration.svg";
-import ForceSvg from "../../assets/images/force.svg";
-import GasolineSvg from "../../assets/images/gasoline.svg";
-import ExchangeSvg from "../../assets/images/exchange.svg";
-import PeopleSvg from "../../assets/images/people.svg";
+// import SpeedSvg from "../../assets/images/speed.svg";
+// import AccelarationSvg from "../../assets/images/acceleration.svg";
+// import ForceSvg from "../../assets/images/force.svg";
+// import GasolineSvg from "../../assets/images/gasoline.svg";
+// import ExchangeSvg from "../../assets/images/exchange.svg";
+// import PeopleSvg from "../../assets/images/people.svg";
 import { Button } from "../../components/Button";
 import { carDTO } from "../../dtos/carsDTOS";
+import { getAcessoryIcon } from "../../utils/getAcessoryIcon";
 
 interface Params {
   car: carDTO;
@@ -72,7 +73,7 @@ export default function CarDetails({ navigation, route }: any) {
             <Acessory
               key={accessory.type}
               name={accessory.name}
-              icon={SpeedSvg}
+              icon={getAcessoryIcon(accessory.type)}
             />
           ))}
           {/* <Acessory name="380Km/h" icon={SpeedSvg} />

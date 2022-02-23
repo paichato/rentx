@@ -13,8 +13,9 @@ import {
   Type,
 } from "./styles";
 
-import GasolineIcon from "../../assets/images/gasoline.svg";
+// import GasolineIcon from "../../assets/images/gasoline.svg";
 import { carDTO } from "../../dtos/carsDTOS";
+import { getAcessoryIcon } from "../../utils/getAcessoryIcon";
 
 interface CarData {
   brand: string;
@@ -31,6 +32,8 @@ interface Props extends TouchableOpacityProps {
 }
 
 export function Car({ data, ...rest }: Props) {
+  const MotorIcon = getAcessoryIcon(data.fuel_type);
+
   return (
     <Container {...rest}>
       <Details>
@@ -44,7 +47,8 @@ export function Car({ data, ...rest }: Props) {
           </Rent>
 
           <Type>
-            <GasolineIcon />
+            {/* <GasolineIcon /> */}
+            <MotorIcon />
           </Type>
         </About>
       </Details>
