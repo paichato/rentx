@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, Alert } from "react-native";
 import React, { useState } from "react";
 import {
   Container,
@@ -24,16 +24,18 @@ import {
 import { Button } from "../../components/Button";
 import { format } from "date-fns";
 import { getPlatformDate } from "../../utils/getPlatformDate";
+import { Params } from "../CarDetails";
 
 interface RentalPeriodProps {
-  start: number;
+  // start: number;
   startFormatted: string;
-  end: number;
+  // end: number;
   endFormatted: string;
 }
 
-export default function Scheduling({ navigation }: any) {
+export default function Scheduling({ navigation, route }: any) {
   const theme = useTheme();
+  const { car } = route.params as Params;
   const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>(
     {} as DayProps
   );
@@ -47,7 +49,14 @@ export default function Scheduling({ navigation }: any) {
   );
 
   const handleConfirm = () => {
-    navigation.navigate("SchedulingDetails");
+    if (!rentalPeriod.startFormatted || !rentalPeriod.endFormatted) {
+      Alert.alert("Selecione o intervalo para alugar");
+    } else {
+      navigation.navigate("SchedulingDetails", {
+        car,
+        dates: Object.keys(markedDates),
+      });
+    }
   };
 
   const handleBack = () => {
@@ -71,8 +80,8 @@ export default function Scheduling({ navigation }: any) {
     const endDate = Object.keys(interval)[Object.keys(interval).length - 1];
 
     setRentalPeriod({
-      start: start.timestamp,
-      end: end.timestamp,
+      // start: start.timestamp,
+      // end: end.timestamp,
       startFormatted: format(
         getPlatformDate(new Date(firstDate)),
         "dd/MM/yyyy"

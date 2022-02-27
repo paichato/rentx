@@ -30,7 +30,7 @@ import { Button } from "../../components/Button";
 import { carDTO } from "../../dtos/carsDTOS";
 import { getAcessoryIcon } from "../../utils/getAcessoryIcon";
 
-interface Params {
+export interface Params {
   car: carDTO;
 }
 
@@ -41,7 +41,7 @@ export default function CarDetails({ navigation, route }: any) {
 
   const handleContinue = () => {
     console.log("hello");
-    navigation.navigate("Scheduling");
+    navigation.navigate("Scheduling", { car });
   };
 
   const handleGoBack = () => {
