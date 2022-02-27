@@ -22,6 +22,15 @@ import {
   MarkedDateProps,
 } from "../../components/Calendar";
 import { Button } from "../../components/Button";
+import { format } from "date-fns";
+import { getPlatformDate } from "../../utils/getPlatformDate";
+
+interface RentalPeriodProps {
+  start: number;
+  startFormatted: string;
+  end: number;
+  endFormatted: string;
+}
 
 export default function Scheduling({ navigation }: any) {
   const theme = useTheme();
@@ -31,6 +40,10 @@ export default function Scheduling({ navigation }: any) {
 
   const [markedDates, setMarkedDates] = useState<MarkedDateProps>(
     {} as MarkedDateProps
+  );
+
+  const [rentalPeriod, setRentalPeriod] = useState<RentalPeriodProps>(
+    {} as RentalPeriodProps
   );
 
   const handleConfirm = () => {
@@ -53,6 +66,19 @@ export default function Scheduling({ navigation }: any) {
     setLastSelectedDate(end);
     const interval = generateInterval(start, end);
     setMarkedDates(interval);
+
+    const firstDate = Object.keys(interval)[0];
+    const endDate = Object.keys(interval)[Object.keys(interval).length - 1];
+
+    setRentalPeriod({
+      start: start.timestamp,
+      end: end.timestamp,
+      startFormatted: format(
+        getPlatformDate(new Date(firstDate)),
+        "dd/MM/yyyy"
+      ),
+      endFormatted: format(getPlatformDate(new Date(firstDate)), "dd/MM/yyyy"),
+    });
   };
 
   return (
@@ -65,12 +91,14 @@ export default function Scheduling({ navigation }: any) {
         <RentalPeriod>
           <DateInfo>
             <DateTitle>De</DateTitle>
-            <DateValue selected={false}>18 de Junho de 2021</DateValue>
+            <DateValue selected={false}>
+              {rentalPeriod.startFormatted}
+            </DateValue>
           </DateInfo>
           <ArrowIcon />
           <DateInfo>
             <DateTitle>De</DateTitle>
-            <DateValue selected={true}>18 de Junho de 2021</DateValue>
+            <DateValue selected={true}>{rentalPeriod.startFormatted}</DateValue>
           </DateInfo>
         </RentalPeriod>
       </Header>

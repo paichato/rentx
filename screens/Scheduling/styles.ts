@@ -35,7 +35,7 @@ export const RentalPeriod = styled.View`
   /* margin: 10px 0; */
 `;
 export const DateInfo = styled.View`
-  width: 30%;
+  width: 35%;
 `;
 export const DateValue = styled.Text<DateValueProps>`
   color: ${({ theme }) => theme.colors.shape};
