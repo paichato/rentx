@@ -90,15 +90,17 @@ export default function Scheduling({ navigation }: any) {
         </Title>
         <RentalPeriod>
           <DateInfo>
-            <DateTitle>De</DateTitle>
-            <DateValue selected={false}>
+            <DateTitle>DE</DateTitle>
+            <DateValue selected={!!rentalPeriod.startFormatted}>
               {rentalPeriod.startFormatted}
             </DateValue>
           </DateInfo>
           <ArrowIcon />
           <DateInfo>
-            <DateTitle>De</DateTitle>
-            <DateValue selected={true}>{rentalPeriod.startFormatted}</DateValue>
+            <DateTitle>ATE</DateTitle>
+            <DateValue selected={!!rentalPeriod.endFormatted}>
+              {rentalPeriod.startFormatted}
+            </DateValue>
           </DateInfo>
         </RentalPeriod>
       </Header>
