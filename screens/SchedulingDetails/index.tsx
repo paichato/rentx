@@ -1,5 +1,5 @@
 import { View, Text, StatusBar } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   About,
   Acessories,
@@ -40,41 +40,75 @@ import { Button } from "../../components/Button";
 import { Feather } from "@expo/vector-icons";
 import { RFValue } from "react-native-responsive-fontsize";
 import { useTheme } from "styled-components";
+import { Params } from "../CarDetails";
+import { getAcessoryIcon } from "../../utils/getAcessoryIcon";
+import { getPlatformDate } from "../../utils/getPlatformDate";
+import { format } from "date-fns";
 
-export default function SchedulingDetails({ navigation }: any) {
+interface RentalPeriodProps {
+  start: string;
+  end: string;
+}
+
+interface DatesProps {
+  dates: string[];
+}
+
+export default function SchedulingDetails({ navigation, route }: any) {
+  const [rentalPeriod, setRentalPeriod] = useState<RentalPeriodProps>(
+    {} as RentalPeriodProps
+  );
   const theme = useTheme();
+  const { car } = route.params as Params;
+  const { dates } = route.params as DatesProps;
+  const rentTotal = Number(dates.length * car.rent.price);
 
   const handleConfirm = () => {
     navigation.navigate("SchedulingDone");
   };
 
+  const handleBack = () => {
+    navigation.goback();
+  };
+
+  useEffect(() => {
+    setRentalPeriod({
+      start: format(getPlatformDate(new Date(dates[0])), "dd/MM/yyyy"),
+      end: format(
+        getPlatformDate(new Date(dates[dates.length - 1])),
+        "dd/MM/yyyy"
+      ),
+    });
+  }, []);
+
   return (
     <Container>
       <StatusBar barStyle="dark-content" />
       <Header>
-        <BackButton />
+        <BackButton onPress={handleBack} />
       </Header>
       <CarImages>
-        <ImagesSlider />
+        <ImagesSlider imagesUrl={car.photos} />
       </CarImages>
       <Content>
         <Details>
           <Description>
-            <Brand>Lambo</Brand>
-            <Name>Hurr</Name>
+            <Brand>{car.brand}</Brand>
+            <Name>{car.name}</Name>
           </Description>
           <Rent>
-            <Period>Ao dia</Period>
-            <Price>R$12123</Price>
+            <Period>{car.rent.period}</Period>
+            <Price>{"R$" + car.rent.price}</Price>
           </Rent>
         </Details>
         <Acessories>
-          <Acessory name="380Km/h" icon={SpeedSvg} />
-          <Acessory name="3.2s" icon={AccelarationSvg} />
-          <Acessory name="800 HP" icon={ForceSvg} />
-          <Acessory name="Gasolina" icon={GasolineSvg} />
-          <Acessory name="Auto" icon={ExchangeSvg} />
-          <Acessory name="2 pessoas" icon={PeopleSvg} />
+          {car.accessories.map((acessory) => (
+            <Acessory
+              key={acessory.type}
+              name={acessory.name}
+              icon={getAcessoryIcon(acessory.type)}
+            />
+          ))}
         </Acessories>
         <RentalPeriod>
           <CalendarIcon>
@@ -86,7 +120,7 @@ export default function SchedulingDetails({ navigation }: any) {
           </CalendarIcon>
           <DateInfo>
             <DateTitle>DE</DateTitle>
-            <DateValue>19/02/22</DateValue>
+            <DateValue>{rentalPeriod.start}</DateValue>
           </DateInfo>
           <Feather
             name="chevron-right"
@@ -95,14 +129,14 @@ export default function SchedulingDetails({ navigation }: any) {
           />
           <DateInfo>
             <DateTitle>DE</DateTitle>
-            <DateValue>19/02/22</DateValue>
+            <DateValue>{rentalPeriod.end}</DateValue>
           </DateInfo>
         </RentalPeriod>
         <RentalPrice>
           <RentalPriceLabel>Total</RentalPriceLabel>
           <RentalPriceDetails>
-            <RentalPriceQuota>R$ 89 x3 diarias</RentalPriceQuota>
-            <RentalPriceTotal>R$ 2.099</RentalPriceTotal>
+            <RentalPriceQuota>{`R$ ${car.rent.price} x${dates.length} diarias`}</RentalPriceQuota>
+            <RentalPriceTotal>{"R$" + rentTotal}</RentalPriceTotal>
           </RentalPriceDetails>
         </RentalPrice>
       </Content>
