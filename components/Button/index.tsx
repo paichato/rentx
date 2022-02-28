@@ -1,24 +1,36 @@
-import { View, Text } from "react-native";
+import { View, Text, ActivityIndicator } from "react-native";
 import React from "react";
 import { Container, Title } from "./styles";
+import theme from "../../styles/theme";
 
 interface Props {
   title: string;
   color?: string;
   onPress: () => void;
   enabled?: boolean;
+  loading?: boolean;
 }
 
-export function Button({ title, color, onPress, enabled = true }: Props) {
+export function Button({
+  title,
+  color,
+  onPress,
+  enabled = true,
+  loading = false,
+}: Props) {
   return (
     <Container
       disabled={!enabled}
       color={color}
       onPress={onPress}
       // enabled={enabled}
-      style={enabled ? { opacity: 1 } : { opacity: 0.6 }}
+      style={{ opacity: enabled === false || loading === true ? 0.5 : 1 }}
     >
-      <Title>{title}</Title>
+      {loading ? (
+        <ActivityIndicator size="large" color={theme.colors.shape} />
+      ) : (
+        <Title>{title}</Title>
+      )}
     </Container>
   );
 }

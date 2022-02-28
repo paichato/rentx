@@ -59,12 +59,14 @@ export default function SchedulingDetails({ navigation, route }: any) {
   const [rentalPeriod, setRentalPeriod] = useState<RentalPeriodProps>(
     {} as RentalPeriodProps
   );
+  const [loading, setLoading] = useState(false);
   const theme = useTheme();
   const { car } = route.params as Params;
   const { dates } = route.params as DatesProps;
   const rentTotal = Number(dates.length * Number(car.rent.price));
 
   const handleConfirm = async () => {
+    setLoading(true);
     const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`);
     // console.log("SC by car:", schedulesByCar);
     console.log("car id:", car.id);
@@ -90,8 +92,12 @@ export default function SchedulingDetails({ navigation, route }: any) {
       .put(`/schedules_bycars/${car.id}`, { id: car.id, unavailable_dates })
       .then((res) => {
         navigation.navigate("SchedulingDone");
+        setLoading(false);
       })
-      .catch((err) => Alert.alert("Nao foi possivel confirmar agendamento"));
+      .catch((err) => {
+        Alert.alert("Nao foi possivel confirmar agendamento");
+        setLoading(false);
+      });
   };
 
   const handleBack = () => {
@@ -169,7 +175,9 @@ export default function SchedulingDetails({ navigation, route }: any) {
       </Content>
       <Footer>
         <Button
+          loading={loading}
           onPress={handleConfirm}
+          enabled={!loading}
           title="Alugar agora"
           color={theme.colors.sucess}
         />
