@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
   Appointments,
@@ -13,9 +13,16 @@ import api from "../../services/api";
 import { Header, Title } from "../Scheduling/styles";
 import { BackButton } from "../../components/BackButton";
 import { useTheme } from "styled-components";
+import { Car } from "../../components/Car";
+
+interface CarProps {
+  id: string;
+  user_id: string;
+  car: carDTO;
+}
 
 export default function MyCars({ navigation }) {
-  const [cars, setCars] = useState<carDTO>([]);
+  const [cars, setCars] = useState<CarProps>([]);
   const [loading, setLoading] = useState(true);
   const theme = useTheme();
 
@@ -28,6 +35,8 @@ export default function MyCars({ navigation }) {
       try {
         const response = await api.get("/schedules_byuser?user_id=1");
         // console.log("res", response.data);
+        setCars(response.data);
+        console.log();
       } catch (error) {
         console.log(error);
       } finally {
@@ -48,8 +57,16 @@ export default function MyCars({ navigation }) {
       <Content>
         <Appointments>
           <AppointmentsTitle>Agendamentos feitos</AppointmentsTitle>
-          <AppointmentsQuantity>05</AppointmentsQuantity>
+          <AppointmentsQuantity>{cars.length}</AppointmentsQuantity>
         </Appointments>
+        <FlatList
+          data={cars}
+          keyExtractor={(item) => item.id}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => {
+            return <Car data={item.car} />;
+          }}
+        />
       </Content>
     </Container>
   );
