@@ -21,6 +21,7 @@ import { useTheme } from "styled-components";
 import { Car } from "../../components/Car";
 import { AntDesign } from "@expo/vector-icons";
 import { Loader } from "../../components/Loader";
+import { Button } from "../../components/Button";
 
 interface CarProps {
   id: string;
@@ -65,6 +66,13 @@ export default function MyCars({ navigation }: any) {
       </Header>
       {loading ? (
         <Loader />
+      ) : cars.length === 0 ? (
+        <>
+          <CarFooter>
+            <AppointmentsTitle>Sem carros agendados</AppointmentsTitle>
+          </CarFooter>
+          <Button title="Agendar agora" onPress={handleBack} />
+        </>
       ) : (
         <Content>
           <Appointments>
