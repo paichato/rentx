@@ -4,6 +4,11 @@ import {
   Appointments,
   AppointmentsQuantity,
   AppointmentsTitle,
+  CarFooter,
+  CarFooterDate,
+  CarFooterPeriod,
+  CarFooterTitle,
+  CarWrapper,
   Container,
   Content,
   Subtitle,
@@ -14,6 +19,7 @@ import { Header, Title } from "../Scheduling/styles";
 import { BackButton } from "../../components/BackButton";
 import { useTheme } from "styled-components";
 import { Car } from "../../components/Car";
+import { AntDesign } from "@expo/vector-icons";
 
 interface CarProps {
   id: string;
@@ -45,7 +51,7 @@ export default function MyCars({ navigation }) {
     };
 
     fetchCars();
-  });
+  }, []);
 
   return (
     <Container>
@@ -64,7 +70,24 @@ export default function MyCars({ navigation }) {
           keyExtractor={(item) => item.id}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => {
-            return <Car data={item.car} />;
+            return (
+              <CarWrapper>
+                <Car data={item.car} />
+                <CarFooter>
+                  <CarFooterTitle>Periodo</CarFooterTitle>
+                  <CarFooterPeriod>
+                    <CarFooterDate>{item.startDate}</CarFooterDate>
+                    <AntDesign
+                      name="arrowright"
+                      size={20}
+                      color={theme.colors.title}
+                      style={{ marginHorizontal: 11 }}
+                    />
+                    <CarFooterDate>{item.endDate}</CarFooterDate>
+                  </CarFooterPeriod>
+                </CarFooter>
+              </CarWrapper>
+            );
           }}
         />
       </Content>
