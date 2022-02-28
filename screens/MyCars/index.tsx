@@ -20,14 +20,17 @@ import { BackButton } from "../../components/BackButton";
 import { useTheme } from "styled-components";
 import { Car } from "../../components/Car";
 import { AntDesign } from "@expo/vector-icons";
+import { Loader } from "../../components/Loader";
 
 interface CarProps {
   id: string;
   user_id: string;
   car: carDTO;
+  startDate: string;
+  endDate: string;
 }
 
-export default function MyCars({ navigation }) {
+export default function MyCars({ navigation }: any) {
   const [cars, setCars] = useState<CarProps>([]);
   const [loading, setLoading] = useState(true);
   const theme = useTheme();
@@ -60,37 +63,41 @@ export default function MyCars({ navigation }) {
         <Title>Seus agendamentos,{"\n"}estão aqui. </Title>
         <Subtitle>Conforto, segurança e praticidade.</Subtitle>
       </Header>
-      <Content>
-        <Appointments>
-          <AppointmentsTitle>Agendamentos feitos</AppointmentsTitle>
-          <AppointmentsQuantity>{cars.length}</AppointmentsQuantity>
-        </Appointments>
-        <FlatList
-          data={cars}
-          keyExtractor={(item) => item.id}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => {
-            return (
-              <CarWrapper>
-                <Car data={item.car} />
-                <CarFooter>
-                  <CarFooterTitle>Periodo</CarFooterTitle>
-                  <CarFooterPeriod>
-                    <CarFooterDate>{item.startDate}</CarFooterDate>
-                    <AntDesign
-                      name="arrowright"
-                      size={20}
-                      color={theme.colors.title}
-                      style={{ marginHorizontal: 11 }}
-                    />
-                    <CarFooterDate>{item.endDate}</CarFooterDate>
-                  </CarFooterPeriod>
-                </CarFooter>
-              </CarWrapper>
-            );
-          }}
-        />
-      </Content>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Content>
+          <Appointments>
+            <AppointmentsTitle>Agendamentos feitos</AppointmentsTitle>
+            <AppointmentsQuantity>{cars.length}</AppointmentsQuantity>
+          </Appointments>
+          <FlatList
+            data={cars}
+            keyExtractor={(item) => item.id}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item }) => {
+              return (
+                <CarWrapper>
+                  <Car data={item.car} />
+                  <CarFooter>
+                    <CarFooterTitle>Periodo</CarFooterTitle>
+                    <CarFooterPeriod>
+                      <CarFooterDate>{item.startDate}</CarFooterDate>
+                      <AntDesign
+                        name="arrowright"
+                        size={20}
+                        color={theme.colors.title}
+                        style={{ marginHorizontal: 11 }}
+                      />
+                      <CarFooterDate>{item.endDate}</CarFooterDate>
+                    </CarFooterPeriod>
+                  </CarFooter>
+                </CarWrapper>
+              );
+            }}
+          />
+        </Content>
+      )}
     </Container>
   );
 }
