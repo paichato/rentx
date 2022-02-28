@@ -1,4 +1,4 @@
-import { View, Text, StatusBar } from "react-native";
+import { View, Text, StatusBar, Alert } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
   About,
@@ -44,6 +44,7 @@ import { Params } from "../CarDetails";
 import { getAcessoryIcon } from "../../utils/getAcessoryIcon";
 import { getPlatformDate } from "../../utils/getPlatformDate";
 import { format } from "date-fns";
+import api from "../../services/api";
 
 interface RentalPeriodProps {
   start: string;
@@ -61,10 +62,26 @@ export default function SchedulingDetails({ navigation, route }: any) {
   const theme = useTheme();
   const { car } = route.params as Params;
   const { dates } = route.params as DatesProps;
-  const rentTotal = Number(dates.length * car.rent.price);
+  const rentTotal = Number(dates.length * Number(car.rent.price));
 
-  const handleConfirm = () => {
-    navigation.navigate("SchedulingDone");
+  const handleConfirm = async () => {
+    const schedulesByCar = await api.get(`/schedules_bycars/${car.id}`);
+    // console.log("SC by car:", schedulesByCar);
+    console.log("car id:", car.id);
+
+    const unavailable_dates = [
+      ...schedulesByCar.data.unavailable_dates,
+      ...dates,
+    ];
+
+    console.log("UN DATES:", unavailable_dates);
+
+    api
+      .put(`/schedules_bycars/${car.id}`, { id: car.id, unavailable_dates })
+      .then((res) => {
+        navigation.navigate("SchedulingDone");
+      })
+      .catch((err) => Alert.alert("Nao foi possivel confirmar agendamento"));
   };
 
   const handleBack = () => {
