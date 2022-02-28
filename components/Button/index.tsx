@@ -6,11 +6,18 @@ interface Props {
   title: string;
   color?: string;
   onPress: () => void;
+  enabled?: boolean;
 }
 
-export function Button({ title, color, onPress }: Props) {
+export function Button({ title, color, onPress, enabled = true }: Props) {
   return (
-    <Container color={color} onPress={onPress}>
+    <Container
+      disabled={!enabled}
+      color={color}
+      onPress={onPress}
+      // enabled={enabled}
+      style={enabled ? { opacity: 1 } : { opacity: 0.6 }}
+    >
       <Title>{title}</Title>
     </Container>
   );
