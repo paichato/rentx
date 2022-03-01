@@ -8,11 +8,12 @@ import Animated, {
   interpolate,
   Extrapolate,
   withSpring,
+  runOnJS,
 } from "react-native-reanimated";
 import BrandSvg from "../../assets/images/brand.svg";
 import LogoSvg from "../../assets/images/logo.svg";
 
-export default function Splash() {
+export default function Splash({ navigation }: any) {
   const animation = useSharedValue(0);
   const animatedStyles = useAnimatedStyle(() => {
     return {
@@ -78,9 +79,16 @@ export default function Splash() {
     };
   });
 
+  const startApp = () => {
+    navigation.navigate("Home");
+  };
+
   useEffect(() => {
-    animation.value = withTiming(100, { duration: 5000 });
-    splashAnimation.value = withTiming(50, { duration: 5000 });
+    animation.value = withTiming(100, { duration: 2000 });
+    splashAnimation.value = withTiming(50, { duration: 2700 }, () => {
+      "worklet";
+      runOnJS(startApp)();
+    });
   }, []);
 
   const handleAnimatePosition = () => {
