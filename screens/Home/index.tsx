@@ -161,7 +161,9 @@ export default function Home({ navigation }: any) {
         <Header>
           <HeaderContent>
             <Logo width={RFValue(108)} height={RFValue(12)} />
-            <TotalCars>Total de {cars.length} carros</TotalCars>
+            <TotalCars>
+              {!loading && "Total de " + cars?.length + " carros"}
+            </TotalCars>
           </HeaderContent>
         </Header>
       </FlingGestureHandler>
