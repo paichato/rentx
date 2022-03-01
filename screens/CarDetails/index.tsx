@@ -29,6 +29,14 @@ import { Acessory } from "../../components/Acessory";
 import { Button } from "../../components/Button";
 import { carDTO } from "../../dtos/carsDTOS";
 import { getAcessoryIcon } from "../../utils/getAcessoryIcon";
+import Animated, {
+  Extrapolate,
+  interpolate,
+  useAnimatedScrollHandler,
+  useAnimatedStyle,
+  useSharedValue,
+} from "react-native-reanimated";
+import { getStatusBarHeight } from "react-native-iphone-x-helper";
 
 export interface Params {
   car: carDTO;
@@ -36,8 +44,24 @@ export interface Params {
 
 export default function CarDetails({ navigation, route }: any) {
   const { car } = route.params as Params;
+  const scrollY = useSharedValue(0);
+  const scrollHandler = useAnimatedScrollHandler((event) => {
+    scrollY.value = event.contentOffset.y;
+    console.log(event.contentOffset.y);
+  });
 
-  console.log(car);
+  const headerStyleAnimation = useAnimatedStyle(() => {
+    return {
+      height: interpolate(
+        scrollY.value,
+        [0, 200],
+        [200, 70],
+        Extrapolate.CLAMP
+      ),
+    };
+  });
+
+  // console.log(car);
 
   const handleContinue = () => {
     console.log("hello");
@@ -50,14 +74,28 @@ export default function CarDetails({ navigation, route }: any) {
 
   return (
     <Container>
-      <StatusBar barStyle="dark-content" />
-      <Header>
-        <BackButton onPress={handleGoBack} />
-      </Header>
-      <CarImages>
-        <ImagesSlider imagesUrl={car.photos} />
-      </CarImages>
-      <Content>
+      <StatusBar
+        barStyle="dark-content"
+        translucent
+        backgroundColor="transparent"
+      />
+      <Animated.View style={[headerStyleAnimation]}>
+        <Header>
+          <BackButton onPress={handleGoBack} />
+        </Header>
+        <CarImages>
+          <ImagesSlider imagesUrl={car.photos} />
+        </CarImages>
+      </Animated.View>
+      <Animated.ScrollView
+        contentContainerStyle={{
+          padding: 24,
+          paddingTop: getStatusBarHeight(),
+          alignItems: "center",
+        }}
+        showsVerticalScrollIndicator={false}
+        onScroll={scrollHandler}
+      >
         <Details>
           <Description>
             <Brand>{car.brand}</Brand>
@@ -84,7 +122,7 @@ export default function CarDetails({ navigation, route }: any) {
           <Acessory name="2 pessoas" icon={PeopleSvg} /> */}
         </Acessories>
         <About>{car.about}</About>
-      </Content>
+      </Animated.ScrollView>
       <Footer>
         <Button
           onPress={handleContinue}
