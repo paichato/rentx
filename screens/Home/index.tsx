@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Alert,
+  BackHandler,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
@@ -128,6 +129,12 @@ export default function Home({ navigation }: any) {
     };
 
     getCars();
+  }, []);
+
+  useEffect(() => {
+    BackHandler.addEventListener("hardwareBackPress", () => {
+      return true;
+    });
   }, []);
 
   // if (loading) {
