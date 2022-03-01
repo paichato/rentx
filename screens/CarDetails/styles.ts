@@ -46,6 +46,7 @@ export const Details = styled.View`
   align-items: center;
   justify-content: space-between;
   margin-top: 38px;
+  padding-top: 30px;
 `;
 
 export const Brand = styled.Text`
@@ -85,6 +86,7 @@ export const About = styled.Text`
   width: 100%;
   margin-top: 24px;
   line-height: ${RFValue(25)}px;
+  padding-bottom: 120px;
 `;
 
 export const Acessories = styled.View`
