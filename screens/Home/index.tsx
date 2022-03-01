@@ -4,6 +4,7 @@ import {
   StatusBar,
   TouchableOpacity,
   StyleSheet,
+  Alert,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
@@ -36,6 +37,9 @@ import {
   GestureDetector,
   Gesture,
   GestureHandlerRootView,
+  FlingGestureHandler,
+  Directions,
+  State,
 } from "react-native-gesture-handler";
 
 const ButtonAnimated = Animated.createAnimatedComponent(TouchableOpacity);
@@ -135,13 +139,21 @@ export default function Home({ navigation }: any) {
         backgroundColor={"transparent"}
         translucent
       />
-
-      <Header>
-        <HeaderContent>
-          <Logo width={RFValue(108)} height={RFValue(12)} />
-          <TotalCars>Total de {cars.length} carros</TotalCars>
-        </HeaderContent>
-      </Header>
+      <FlingGestureHandler
+        direction={Directions.RIGHT | Directions.LEFT | Directions.DOWN}
+        onHandlerStateChange={({ nativeEvent }) => {
+          if (nativeEvent.state === State.ACTIVE) {
+            Alert.alert("I'm flinged!");
+          }
+        }}
+      >
+        <Header>
+          <HeaderContent>
+            <Logo width={RFValue(108)} height={RFValue(12)} />
+            <TotalCars>Total de {cars.length} carros</TotalCars>
+          </HeaderContent>
+        </Header>
+      </FlingGestureHandler>
       {loading ? (
         <Loader />
       ) : (
