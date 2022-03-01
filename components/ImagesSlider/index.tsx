@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import React from "react";
 import {
   CarImage,
@@ -23,10 +23,16 @@ export default function ImagesSlider({ imagesUrl }: Props) {
         <ImageIndex active={false} />
       </ImageIndexes>
       <CarImageWrapper>
-        <CarImage
-          source={{
-            uri: imagesUrl[0],
-          }}
+        <FlatList
+          data={imagesUrl}
+          keyExtractor={(key) => key}
+          renderItem={({ item }) => (
+            <CarImage
+              source={{
+                uri: item,
+              }}
+            />
+          )}
         />
       </CarImageWrapper>
     </Container>

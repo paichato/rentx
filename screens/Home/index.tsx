@@ -20,7 +20,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "styled-components";
 
 export default function Home({ navigation }: any) {
-  const [cars, setCars] = useState<carDTO>();
+  const [cars, setCars] = useState<carDTO>([]);
   const [loading, setLoading] = useState(true);
   const theme = useTheme();
 
@@ -62,7 +62,7 @@ export default function Home({ navigation }: any) {
       <Header>
         <HeaderContent>
           <Logo width={RFValue(108)} height={RFValue(12)} />
-          <TotalCars>Total de 12 carros</TotalCars>
+          <TotalCars>Total de {cars.length} carros</TotalCars>
         </HeaderContent>
       </Header>
       {loading ? (
