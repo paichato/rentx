@@ -30,6 +30,7 @@ import Animated, {
   useSharedValue,
   useAnimatedGestureHandler,
   withTiming,
+  withSpring,
 } from "react-native-reanimated";
 import {
   RectButton,
@@ -99,7 +100,10 @@ export default function Home({ navigation }: any) {
       positionX.value = ctx.positionX + event.translationX;
       positionY.value = ctx.positionY + event.translationY;
     },
-    onEnd(event) {},
+    onEnd(event) {
+      positionX.value = withSpring(0);
+      positionY.value = withSpring(0);
+    },
   });
 
   function handleCarlSelection(car: carDTO) {
