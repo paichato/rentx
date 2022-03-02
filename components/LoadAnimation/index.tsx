@@ -7,7 +7,13 @@ import loadingCar from "../../assets/images/load_animation.json";
 export default function LoadAnimation() {
   return (
     <Container>
-      <LottieView autoPlay style={{ height: 200 }} source={loadingCar} />
+      <LottieView
+        autoPlay
+        style={{ height: 200 }}
+        source={loadingCar}
+        resizeMode="contain"
+        loop
+      />
     </Container>
   );
 }
