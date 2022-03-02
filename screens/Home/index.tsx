@@ -134,14 +134,22 @@ export default function Home({ navigation }: any) {
   }, []);
 
   useEffect(() => {
-    const listener = BackHandler.addEventListener("hardwareBackPress", () => {
-      if (isFocused) {
+    function handleBack() {
+      if (navigation.isFocused()) {
         return true;
       } else {
         return false;
       }
-    });
-    return listener.remove();
+    }
+
+    const listener = BackHandler.addEventListener(
+      "hardwareBackPress",
+      handleBack
+    );
+
+    return () =>
+      BackHandler.removeEventListener("hardwareBackPress", handleBack);
+
     // return () =>
     //   BackHandler.removeEventListener("hardwareBackPress", () => false);
   }, []);
