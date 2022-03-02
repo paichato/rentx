@@ -20,10 +20,11 @@ import {
 import Logo from "../../assets/images/logo.svg";
 import { RFValue } from "react-native-responsive-fontsize";
 import { Car } from "../../components/Car";
-import { NavigationProp } from "@react-navigation/native";
+import { NavigationProp, useIsFocused } from "@react-navigation/native";
 import api from "../../services/api";
 import { carDTO } from "../../dtos/carsDTOS";
 import { Loader } from "../../components/Loader";
+import LoadAnimation from "../../components/LoadAnimation";
 import { Ionicons } from "@expo/vector-icons";
 import { useTheme } from "styled-components";
 import Animated, {
@@ -53,6 +54,7 @@ export default function Home({ navigation }: any) {
 
   const positionY = useSharedValue(13);
   const positionX = useSharedValue(22);
+  const isFocused = useIsFocused();
   const myCarsButtonStyles = useAnimatedStyle(() => {
     return {
       transform: [
@@ -132,9 +134,16 @@ export default function Home({ navigation }: any) {
   }, []);
 
   useEffect(() => {
-    BackHandler.addEventListener("hardwareBackPress", () => {
-      return true;
+    const listener = BackHandler.addEventListener("hardwareBackPress", () => {
+      if (isFocused) {
+        return true;
+      } else {
+        return false;
+      }
     });
+    return listener.remove();
+    // return () =>
+    //   BackHandler.removeEventListener("hardwareBackPress", () => false);
   }, []);
 
   // if (loading) {
@@ -168,7 +177,7 @@ export default function Home({ navigation }: any) {
         </Header>
       </FlingGestureHandler>
       {loading ? (
-        <Loader />
+        <LoadAnimation />
       ) : (
         <CarList
           data={cars}

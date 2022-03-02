@@ -22,6 +22,7 @@ import { Car } from "../../components/Car";
 import { AntDesign } from "@expo/vector-icons";
 import { Loader } from "../../components/Loader";
 import { Button } from "../../components/Button";
+import LoadAnimation from "../../components/LoadAnimation";
 
 interface CarProps {
   id: string;
@@ -65,7 +66,7 @@ export default function MyCars({ navigation }: any) {
         <Subtitle>Conforto, segurança e praticidade.</Subtitle>
       </Header>
       {loading ? (
-        <Loader />
+        <LoadAnimation />
       ) : cars.length === 0 ? (
         <>
           <CarFooter>
