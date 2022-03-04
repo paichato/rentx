@@ -18,3 +18,8 @@ export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.secondary_600};
   color: ${({ theme }) => theme.colors.title};
 `;
+export const Subtitle = styled.Text`
+  font-size: ${RFValue(40)}px;
+  font-family: ${({ theme }) => theme.fonts.secondary_600};
+  color: ${({ theme }) => theme.colors.title};
+`;
