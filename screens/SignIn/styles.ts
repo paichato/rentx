@@ -25,3 +25,5 @@ export const Subtitle = styled.Text`
   line-height: ${RFValue(25)}px;
   margin-top: 16px;
 `;
+
+export const Footer = styled.View``;
