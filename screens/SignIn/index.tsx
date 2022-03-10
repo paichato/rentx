@@ -22,7 +22,13 @@ export default function SignIn() {
         </Subtitle>
       </Header>
       <Form>
-        <Input />
+        <Input
+          placeholder="Email"
+          iconName="mail"
+          keyboardType="email-address"
+          autoCorrect={false}
+          autoCapitalize="none"
+        />
       </Form>
       <Footer>
         <Button
