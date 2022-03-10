@@ -7,6 +7,7 @@ export const Container = styled.View`
   /* background-color: ${({ theme }) => theme.colors.main}; */
   flex-direction: row;
   align-items: center;
+  margin-bottom: 8px;
   /* justify-content: center; */
 `;
 

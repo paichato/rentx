@@ -28,3 +28,8 @@ export const IconContainer = styled.View`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.bg_secondary};
 `;
+
+export const ChangePasswordVisibilityButton = styled.TouchableOpacity`
+  position: absolute;
+  right: 10px;
+`;
