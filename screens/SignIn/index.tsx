@@ -6,7 +6,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Container, Header, Subtitle, Title, Footer, Form } from "./styles";
 import { Button } from "../../components/Button";
 import { useTheme } from "styled-components";
@@ -15,6 +15,9 @@ import PasswordInput from "../../components/PasswordInput";
 
 export default function SignIn() {
   const theme = useTheme();
+
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
   return (
     <KeyboardAvoidingView behavior="position" enabled>
