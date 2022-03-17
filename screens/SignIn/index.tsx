@@ -41,12 +41,16 @@ export default function SignIn() {
               keyboardType="email-address"
               autoCorrect={false}
               autoCapitalize="none"
+              value={email}
+              onChangeText={setEmail}
             />
             <PasswordInput
               placeholder="Password"
               iconName="lock"
               autoCorrect={false}
               autoCapitalize="none"
+              value={password}
+              onChangeText={setPassword}
             />
           </Form>
           <Footer>

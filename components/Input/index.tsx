@@ -7,9 +7,15 @@ import { useTheme } from "styled-components";
 interface Props extends TextInputProps {
   iconName: React.ComponentProps<typeof Feather>["name"];
   placeholder: string;
+  value?: string;
 }
 
-export default function Input({ iconName, placeholder, ...rest }: Props) {
+export default function Input({
+  iconName,
+  placeholder,
+  value,
+  ...rest
+}: Props) {
   const theme = useTheme();
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -19,6 +25,8 @@ export default function Input({ iconName, placeholder, ...rest }: Props) {
   };
   const handleInputBlur = () => {
     setIsFocused(false);
+    setIsFilled(!!value);
+    console.log(value);
   };
 
   return (
@@ -27,7 +35,9 @@ export default function Input({ iconName, placeholder, ...rest }: Props) {
         <Feather
           name={iconName}
           size={24}
-          color={isFocused ? theme.colors.main : theme.colors.text_detail}
+          color={
+            isFocused || isFilled ? theme.colors.main : theme.colors.text_detail
+          }
         />
       </IconContainer>
       <InputText
