@@ -15,7 +15,7 @@ import Input from "../../components/Input";
 import PasswordInput from "../../components/PasswordInput";
 import * as Yup from "yup";
 
-export default function SignIn() {
+export default function SignIn({ navigation }: any) {
   const theme = useTheme();
 
   const [email, setEmail] = useState();
@@ -42,6 +42,10 @@ export default function SignIn() {
         );
       }
     }
+  };
+
+  const handleNewAccount = () => {
+    navigation.navigate("SignUpFirstStep");
   };
 
   return (
@@ -89,6 +93,7 @@ export default function SignIn() {
               color={theme.colors.bg_secondary}
               light
               title="Criar conta gratuita"
+              onPress={handleNewAccount}
               enabled={true}
               loading={false}
             />
