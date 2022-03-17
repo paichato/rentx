@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React from "react";
 import { BackButton } from "../../../components/BackButton";
 import Bullet from "../../../components/Bullet";
-import { Container, Header } from "./styles";
+import { Container, Header, Steps } from "./styles";
 
 export default function SignUpFirstStep({ navigation }: any) {
   const handleBack = () => {
@@ -13,7 +13,11 @@ export default function SignUpFirstStep({ navigation }: any) {
     <Container>
       <Header>
         <BackButton onPress={handleBack} />
-        <Bullet active={false} />
+        <Steps>
+          <Bullet active />
+
+          <Bullet />
+        </Steps>
       </Header>
     </Container>
   );
