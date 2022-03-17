@@ -1,12 +1,17 @@
-import { View, Text, ActivityIndicator } from "react-native";
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  TouchableOpacityProps,
+} from "react-native";
 import React from "react";
 import { Container, Title } from "./styles";
 import theme from "../../styles/theme";
 
-interface Props {
+interface Props extends TouchableOpacityProps {
   title: string;
   color?: string;
-  onPress: () => void;
+  // onPress: () => void;
   enabled?: boolean;
   loading?: boolean;
   light?: boolean;
@@ -14,7 +19,7 @@ interface Props {
 
 export function Button({
   title,
-  color,
+  color = "",
   onPress,
   enabled = true,
   loading = false,

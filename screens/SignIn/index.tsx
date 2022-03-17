@@ -65,7 +65,7 @@ export default function SignIn() {
               light
               title="Criar conta gratuita"
               onPress={() => {}}
-              enabled={false}
+              enabled={true}
               loading={false}
             />
           </Footer>
