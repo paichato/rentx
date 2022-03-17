@@ -33,7 +33,7 @@ export const InputText = styled.TextInput`
 `;
 
 export const IconContainer = styled.View`
-  height: 56px;
+  height: 54px;
   width: 56px;
   justify-content: center;
   align-items: center;
