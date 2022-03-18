@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React from "react";
 import { BackButton } from "../../../components/BackButton";
 import Bullet from "../../../components/Bullet";
-import { Container, Header, Steps } from "./styles";
+import { Container, Header, Steps, Subtitle, Title } from "./styles";
 
 export default function SignUpFirstStep({ navigation }: any) {
   const handleBack = () => {
@@ -19,6 +19,12 @@ export default function SignUpFirstStep({ navigation }: any) {
           <Bullet />
         </Steps>
       </Header>
+
+      <Title>Crie sua {"\n"} conta</Title>
+      <Subtitle>
+        Faça seu cadastro de {"\n"}
+        forma rápida e fácil
+      </Subtitle>
     </Container>
   );
 }
