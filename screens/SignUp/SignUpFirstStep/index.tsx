@@ -19,6 +19,7 @@ import {
   Subtitle,
   Title,
 } from "./styles";
+import * as Yup from "yup";
 
 export default function SignUpFirstStep({ navigation }: any) {
   const [name, setName] = useState("");
@@ -29,8 +30,19 @@ export default function SignUpFirstStep({ navigation }: any) {
     navigation.goBack();
   };
 
-  const handleNextStep = () => {
-    navigation.navigate("SignUpSecondStep");
+  const handleNextStep = async () => {
+    try {
+      const schema = Yup.object().shape({
+        name: Yup.string().required("Nome"),
+        email: Yup.string()
+          .email("E-mail invalido")
+          .required("E-mail é obrigatorio"),
+        driverLicense: Yup.string().required("Carta de conducao é obrigatória"),
+      });
+      const data = { name, email, driverLicense };
+      await schema.validate("SignUpSecondStep");
+      navigation.navigate("SignUpSecondStep");
+    } catch (error) {}
   };
 
   return (
