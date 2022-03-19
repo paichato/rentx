@@ -2,6 +2,7 @@ import { View, Text } from "react-native";
 import React from "react";
 import { BackButton } from "../../../components/BackButton";
 import Bullet from "../../../components/Bullet";
+import Input from "../../../components/Input";
 import {
   Container,
   Form,
@@ -35,6 +36,9 @@ export default function SignUpFirstStep({ navigation }: any) {
       </Subtitle>
       <Form>
         <FormTitle>1.Dados</FormTitle>
+        <Input iconName="user" placeholder="Nome" />
+        <Input iconName="mail" placeholder="Email" />
+        <Input iconName="credit-card" placeholder="CNH" />
       </Form>
     </Container>
   );
