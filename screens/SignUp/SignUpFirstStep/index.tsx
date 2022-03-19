@@ -3,6 +3,7 @@ import React from "react";
 import { BackButton } from "../../../components/BackButton";
 import Bullet from "../../../components/Bullet";
 import Input from "../../../components/Input";
+import { Button } from "../../../components/Button";
 import {
   Container,
   Form,
@@ -40,6 +41,7 @@ export default function SignUpFirstStep({ navigation }: any) {
         <Input iconName="mail" placeholder="Email" />
         <Input iconName="credit-card" placeholder="CNH" />
       </Form>
+      <Button title="Proximo" />
     </Container>
   );
 }
