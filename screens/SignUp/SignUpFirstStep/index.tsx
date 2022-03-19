@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, KeyboardAvoidingView } from "react-native";
 import React from "react";
 import { BackButton } from "../../../components/BackButton";
 import Bullet from "../../../components/Bullet";
@@ -20,28 +20,30 @@ export default function SignUpFirstStep({ navigation }: any) {
   };
 
   return (
-    <Container>
-      <Header>
-        <BackButton onPress={handleBack} />
-        <Steps>
-          <Bullet active />
+    <KeyboardAvoidingView behavior="position" enabled>
+      <Container>
+        <Header>
+          <BackButton onPress={handleBack} />
+          <Steps>
+            <Bullet active />
 
-          <Bullet />
-        </Steps>
-      </Header>
+            <Bullet />
+          </Steps>
+        </Header>
 
-      <Title>Crie sua {"\n"} conta</Title>
-      <Subtitle>
-        Faça seu cadastro de {"\n"}
-        forma rápida e fácil
-      </Subtitle>
-      <Form>
-        <FormTitle>1.Dados</FormTitle>
-        <Input iconName="user" placeholder="Nome" />
-        <Input iconName="mail" placeholder="Email" />
-        <Input iconName="credit-card" placeholder="CNH" />
-      </Form>
-      <Button title="Proximo" />
-    </Container>
+        <Title>Crie sua {"\n"} conta</Title>
+        <Subtitle>
+          Faça seu cadastro de {"\n"}
+          forma rápida e fácil
+        </Subtitle>
+        <Form>
+          <FormTitle>1.Dados</FormTitle>
+          <Input iconName="user" placeholder="Nome" />
+          <Input iconName="mail" placeholder="Email" />
+          <Input iconName="credit-card" placeholder="CNH" />
+        </Form>
+        <Button title="Proximo" />
+      </Container>
+    </KeyboardAvoidingView>
   );
 }
