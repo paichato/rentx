@@ -40,6 +40,7 @@ export default function SignUpFirstStep({ navigation }: any) {
           .required("E-mail é obrigatorio"),
         name: Yup.string().required("Nome"),
       });
+      let trimedEmail = email.trim();
       const data = { name, email, driverLicense };
       await schema.validate(data);
       navigation.navigate("SignUpSecondStep", { user: data });
@@ -76,12 +77,14 @@ export default function SignUpFirstStep({ navigation }: any) {
               onChangeText={setName}
               value={name}
               placeholder="Nome"
+              textContentType="name"
             />
             <Input
               iconName="mail"
               placeholder="Email"
-              onChangeText={setEmail}
+              onChangeText={(value) => setEmail(value.trim())}
               value={email}
+              textContentType="emailAddress"
               keyboardType="email-address"
             />
             <Input
