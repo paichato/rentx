@@ -48,7 +48,7 @@ export default function SignUpSecondStep({ navigation }: any) {
             forma rápida e fácil
           </Subtitle>
           <Form>
-            <FormTitle>2.Dados</FormTitle>
+            <FormTitle>2.Senha</FormTitle>
             <PasswordInput iconName="lock" placeholder="Senha" />
             <PasswordInput iconName="lock" placeholder="Repetir Senha" />
           </Form>

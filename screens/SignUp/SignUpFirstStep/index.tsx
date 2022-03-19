@@ -5,7 +5,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { BackButton } from "../../../components/BackButton";
 import Bullet from "../../../components/Bullet";
 import Input from "../../../components/Input";
@@ -21,6 +21,10 @@ import {
 } from "./styles";
 
 export default function SignUpFirstStep({ navigation }: any) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [driverLicense, setDriverLicense] = useState("");
+
   const handleBack = () => {
     navigation.goBack();
   };
@@ -49,15 +53,24 @@ export default function SignUpFirstStep({ navigation }: any) {
           </Subtitle>
           <Form>
             <FormTitle>1.Dados</FormTitle>
-            <Input iconName="user" placeholder="Nome" />
+            <Input
+              iconName="user"
+              onChangeText={setName}
+              value={name}
+              placeholder="Nome"
+            />
             <Input
               iconName="mail"
               placeholder="Email"
+              onChangeText={setEmail}
+              value={email}
               keyboardType="email-address"
             />
             <Input
               iconName="credit-card"
               placeholder="CNH"
+              value={driverLicense}
+              onChangeText={setDriverLicense}
               keyboardType="numeric"
             />
           </Form>
