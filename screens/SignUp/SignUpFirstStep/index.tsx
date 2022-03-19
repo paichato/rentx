@@ -2,7 +2,15 @@ import { View, Text } from "react-native";
 import React from "react";
 import { BackButton } from "../../../components/BackButton";
 import Bullet from "../../../components/Bullet";
-import { Container, Header, Steps, Subtitle, Title } from "./styles";
+import {
+  Container,
+  Form,
+  FormTitle,
+  Header,
+  Steps,
+  Subtitle,
+  Title,
+} from "./styles";
 
 export default function SignUpFirstStep({ navigation }: any) {
   const handleBack = () => {
@@ -25,6 +33,9 @@ export default function SignUpFirstStep({ navigation }: any) {
         Faça seu cadastro de {"\n"}
         forma rápida e fácil
       </Subtitle>
+      <Form>
+        <FormTitle>1.Dados</FormTitle>
+      </Form>
     </Container>
   );
 }
