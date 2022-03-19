@@ -39,7 +39,7 @@ export const FormTitle = styled.Text`
   font-family: ${({ theme }) => theme.fonts.secondary_600};
   color: ${({ theme }) => theme.colors.title};
   /* line-height: ${RFValue(25)}px; */
-  /* margin-bottom: 16px; */
+  margin-bottom: 24px;
 `;
 
 export const Form = styled.View`
