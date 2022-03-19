@@ -40,7 +40,7 @@ export default function SignUpFirstStep({ navigation }: any) {
           .required("E-mail é obrigatorio"),
         name: Yup.string().required("Nome"),
       });
-      let trimedEmail = email.trim();
+
       const data = { name, email, driverLicense };
       await schema.validate(data);
       navigation.navigate("SignUpSecondStep", { user: data });

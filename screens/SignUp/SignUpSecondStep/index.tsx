@@ -4,8 +4,9 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  Alert,
 } from "react-native";
-import React from "react";
+import React, { Props, useState } from "react";
 import { BackButton } from "../../../components/BackButton";
 import Bullet from "../../../components/Bullet";
 import Input from "../../../components/Input";
@@ -21,9 +22,45 @@ import {
 } from "./styles";
 import PasswordInput from "../../../components/PasswordInput";
 import { useTheme } from "styled-components";
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from "@react-navigation/native-stack";
+import { RootStackParamList, RootStackScreenProps } from "../../../types";
+import { NativeStackNavigatorProps } from "@react-navigation/native-stack/lib/typescript/src/types";
+import { ScreenStackProps } from "react-native-screens";
+import {
+  NavigationProp,
+  NavigationState,
+  ParamListBase,
+  useRoute,
+} from "@react-navigation/native";
+
+interface Params {
+  user: {
+    name: string;
+    email: string;
+    driverLicense: string;
+  };
+  navigation: NativeStackNavigationProp<RootStackParamList>;
+}
 
 export default function SignUpSecondStep({ navigation }: any) {
   const theme = useTheme();
+  const route = useRoute();
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+
+  const { user } = route.params as Params;
+  console.log(user);
+
+  const handleRegister = () => {
+    if (!password || !passwordConfirm) {
+      return Alert.alert("Preencha todos os campos!");
+    } else if (password !== passwordConfirm) {
+      return Alert.alert("Senhas nao sao iguais");
+    }
+  };
 
   const handleBack = () => {
     navigation.goBack();
@@ -49,10 +86,24 @@ export default function SignUpSecondStep({ navigation }: any) {
           </Subtitle>
           <Form>
             <FormTitle>2.Senha</FormTitle>
-            <PasswordInput iconName="lock" placeholder="Senha" />
-            <PasswordInput iconName="lock" placeholder="Repetir Senha" />
+            <PasswordInput
+              iconName="lock"
+              placeholder="Senha"
+              value={password}
+              onChangeText={setPassword}
+            />
+            <PasswordInput
+              iconName="lock"
+              placeholder="Repetir Senha"
+              value={passwordConfirm}
+              onChangeText={setPasswordConfirm}
+            />
           </Form>
-          <Button color={theme.colors.sucess} title="Proximo" />
+          <Button
+            color={theme.colors.sucess}
+            title="Proximo"
+            onPress={handleRegister}
+          />
         </Container>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
