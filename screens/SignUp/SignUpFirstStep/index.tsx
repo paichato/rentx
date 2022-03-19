@@ -25,6 +25,10 @@ export default function SignUpFirstStep({ navigation }: any) {
     navigation.goBack();
   };
 
+  const handleNextStep = () => {
+    navigation.navigate("SignUpSecondStep");
+  };
+
   return (
     <KeyboardAvoidingView behavior="position" enabled>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -57,7 +61,7 @@ export default function SignUpFirstStep({ navigation }: any) {
               keyboardType="numeric"
             />
           </Form>
-          <Button title="Proximo" />
+          <Button title="Proximo" onPress={handleNextStep} />
         </Container>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

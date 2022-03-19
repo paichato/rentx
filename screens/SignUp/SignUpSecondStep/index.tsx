@@ -19,8 +19,12 @@ import {
   Subtitle,
   Title,
 } from "./styles";
+import PasswordInput from "../../../components/PasswordInput";
+import { useTheme } from "styled-components";
 
 export default function SignUpSecondStep({ navigation }: any) {
+  const theme = useTheme();
+
   const handleBack = () => {
     navigation.goBack();
   };
@@ -44,20 +48,11 @@ export default function SignUpSecondStep({ navigation }: any) {
             forma rápida e fácil
           </Subtitle>
           <Form>
-            <FormTitle>1.Dados</FormTitle>
-            <Input iconName="user" placeholder="Nome" />
-            <Input
-              iconName="mail"
-              placeholder="Email"
-              keyboardType="email-address"
-            />
-            <Input
-              iconName="credit-card"
-              placeholder="CNH"
-              keyboardType="numeric"
-            />
+            <FormTitle>2.Dados</FormTitle>
+            <PasswordInput iconName="lock" placeholder="Senha" />
+            <PasswordInput iconName="lock" placeholder="Repetir Senha" />
           </Form>
-          <Button title="Proximo" />
+          <Button color={theme.colors.sucess} title="Proximo" />
         </Container>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
