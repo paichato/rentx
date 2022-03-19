@@ -41,7 +41,7 @@ export default function SignUpFirstStep({ navigation }: any) {
         driverLicense: Yup.string().required("Carta de conducao é obrigatória"),
       });
       const data = { name, email, driverLicense };
-      await schema.validate("SignUpSecondStep");
+      await schema.validate(data);
       navigation.navigate("SignUpSecondStep", { user: data });
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
