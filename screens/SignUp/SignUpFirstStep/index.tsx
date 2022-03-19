@@ -4,6 +4,7 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import { BackButton } from "../../../components/BackButton";
@@ -41,8 +42,13 @@ export default function SignUpFirstStep({ navigation }: any) {
       });
       const data = { name, email, driverLicense };
       await schema.validate("SignUpSecondStep");
-      navigation.navigate("SignUpSecondStep");
-    } catch (error) {}
+      navigation.navigate("SignUpSecondStep", { user: data });
+    } catch (error) {
+      if (error instanceof Yup.ValidationError) {
+        return Alert.alert("Opa", error.message);
+      } else {
+      }
+    }
   };
 
   return (
