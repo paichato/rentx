@@ -46,8 +46,16 @@ export default function SignUpFirstStep({ navigation }: any) {
           <Form>
             <FormTitle>1.Dados</FormTitle>
             <Input iconName="user" placeholder="Nome" />
-            <Input iconName="mail" placeholder="Email" />
-            <Input iconName="credit-card" placeholder="CNH" />
+            <Input
+              iconName="mail"
+              placeholder="Email"
+              keyboardType="email-address"
+            />
+            <Input
+              iconName="credit-card"
+              placeholder="CNH"
+              keyboardType="numeric"
+            />
           </Form>
           <Button title="Proximo" />
         </Container>
