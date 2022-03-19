@@ -34,11 +34,11 @@ export default function SignUpFirstStep({ navigation }: any) {
   const handleNextStep = async () => {
     try {
       const schema = Yup.object().shape({
-        name: Yup.string().required("Nome"),
+        driverLicense: Yup.string().required("Carta de conducao é obrigatória"),
         email: Yup.string()
           .email("E-mail invalido")
           .required("E-mail é obrigatorio"),
-        driverLicense: Yup.string().required("Carta de conducao é obrigatória"),
+        name: Yup.string().required("Nome"),
       });
       const data = { name, email, driverLicense };
       await schema.validate(data);
