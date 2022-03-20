@@ -91,7 +91,12 @@ export default function SchedulingDetails({ navigation, route }: any) {
     api
       .put(`/schedules_bycars/${car.id}`, { id: car.id, unavailable_dates })
       .then((res) => {
-        navigation.navigate("SchedulingDone");
+        navigation.navigate("Confirmation", {
+          title: "Carro alugado!",
+          message:
+            'Agora voce so precisa ir {"\n"} ate a concessionaria da RENTX {"\n"} pegar o seu automovel.',
+          nexScreenRoute: "Home",
+        });
         setLoading(false);
       })
       .catch((err) => {

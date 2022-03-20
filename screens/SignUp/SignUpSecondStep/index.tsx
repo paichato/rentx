@@ -57,9 +57,16 @@ export default function SignUpSecondStep({ navigation }: any) {
   const handleRegister = () => {
     if (!password || !passwordConfirm) {
       return Alert.alert("Preencha todos os campos!");
-    } else if (password !== passwordConfirm) {
+    }
+    if (password !== passwordConfirm) {
       return Alert.alert("Senhas nao sao iguais");
     }
+
+    navigation.navigate("Confirmation", {
+      title: "Conta criada!",
+      message: "Agora e so fazer login\n e aproveitar",
+      nextScreenRoute: "SignIn",
+    });
   };
 
   const handleBack = () => {

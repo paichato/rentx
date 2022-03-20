@@ -21,7 +21,7 @@ import {
 import CarDetails from "./screens/CarDetails";
 import Scheduling from "./screens/Scheduling";
 import SchedulingDetails from "./screens/SchedulingDetails";
-import SchedulingDone from "./screens/SchedulingDone";
+import Confirmation from "./screens/Confirmation";
 import { Routes } from "./routes";
 // import Routes from "./routes";
 
@@ -49,7 +49,7 @@ export default function App() {
         {/* <StatusBar /> */}
         {/* <Scheduling /> */}
         {/* <SchedulingDetails /> */}
-        {/* <SchedulingDone /> */}
+        {/* <Confirmation /> */}
         <Routes />
       </ThemeProvider>
       // </SafeAreaProvider>
