@@ -86,7 +86,7 @@ export const About = styled.Text`
   width: 100%;
   margin-top: 24px;
   line-height: ${RFValue(25)}px;
-  padding-bottom: 120px;
+  /* padding-bottom: 120px; */
 `;
 
 export const Acessories = styled.View`
