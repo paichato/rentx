@@ -33,7 +33,7 @@ const AuhtContext = createContext<AuthContextData>({} as AuthContextData);
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const [data, setData] = useState<AuthState>({} as AuthState);
 
-  const signIn = async ({ email, password }) => {
+  const signIn = async ({ email, password }: SignInCredentials) => {
     const response = await api.post("/sessions", {
       email,
       password,
