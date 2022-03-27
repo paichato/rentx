@@ -23,6 +23,7 @@ import Scheduling from "./screens/Scheduling";
 import SchedulingDetails from "./screens/SchedulingDetails";
 import Confirmation from "./screens/Confirmation";
 import { Routes } from "./routes";
+import { AppProvider } from "./hooks";
 // import Routes from "./routes";
 
 export default function App() {
@@ -43,14 +44,16 @@ export default function App() {
     return (
       // <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        {/* <Navigation colorScheme={colorScheme} /> */}
-        {/* <Home /> */}
-        {/* <CarDetails /> */}
-        {/* <StatusBar /> */}
-        {/* <Scheduling /> */}
-        {/* <SchedulingDetails /> */}
-        {/* <Confirmation /> */}
-        <Routes />
+        <AppProvider>
+          {/* <Navigation colorScheme={colorScheme} /> */}
+          {/* <Home /> */}
+          {/* <CarDetails /> */}
+          {/* <StatusBar /> */}
+          {/* <Scheduling /> */}
+          {/* <SchedulingDetails /> */}
+          {/* <Confirmation /> */}
+          <Routes />
+        </AppProvider>
       </ThemeProvider>
       // </SafeAreaProvider>
     );
