@@ -35,6 +35,7 @@ import {
   ParamListBase,
   useRoute,
 } from "@react-navigation/native";
+import api from "../../../services/api";
 
 interface Params {
   user: {
@@ -54,7 +55,7 @@ export default function SignUpSecondStep({ navigation }: any) {
   const { user } = route.params as Params;
   console.log(user);
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     if (!password || !passwordConfirm) {
       return Alert.alert("Preencha todos os campos!");
     }
@@ -62,11 +63,24 @@ export default function SignUpSecondStep({ navigation }: any) {
       return Alert.alert("Senhas nao sao iguais");
     }
 
-    navigation.navigate("Confirmation", {
-      title: "Conta criada!",
-      message: "Agora e so fazer login\n e aproveitar",
-      nextScreenRoute: "SignIn",
-    });
+    await api
+      .post("/users", {
+        name: user.name,
+        email: user.email,
+        password,
+        driver_license: user.driverLicense,
+      })
+      .then((res) => {
+        navigation.navigate("Confirmation", {
+          title: "Conta criada!",
+          message: "Agora e so fazer login\n e aproveitar",
+          nextScreenRoute: "SignIn",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        Alert.alert("Opa", "Nao foi possivel cadastrar");
+      });
   };
 
   const handleBack = () => {
