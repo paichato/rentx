@@ -80,7 +80,7 @@ export default function Splash({ navigation }: any) {
   });
 
   const startApp = () => {
-    navigation.navigate("Home");
+    navigation.navigate("SignIn");
   };
 
   useEffect(() => {
