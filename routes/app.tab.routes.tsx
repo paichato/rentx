@@ -41,18 +41,18 @@ export function AppTabRoutes() {
         component={AppStackRoutes}
         options={{
           gestureEnabled: false,
-          tabBarIcon: ({ color }) => {
-            <HomeSVG fill={color} width={24} height={24} />;
-          },
+          tabBarIcon: ({ color }) => (
+            <HomeSVG fill={color} width={24} height={24} />
+          ),
         }}
       />
       <Screen
         name="Profile"
         component={SignUpFirstStep}
         options={{
-          tabBarIcon: ({ color }) => {
-            <PeopleSVG fill={color} width={24} height={24} />;
-          },
+          tabBarIcon: ({ color }) => (
+            <PeopleSVG fill={color} width={24} height={24} />
+          ),
         }}
       />
 
@@ -60,9 +60,9 @@ export function AppTabRoutes() {
         name="MyCars"
         component={MyCars}
         options={{
-          tabBarIcon: ({ color }) => {
-            <CarSVG fill={color} width={24} height={24} />;
-          },
+          tabBarIcon: ({ color }) => (
+            <CarSVG fill={color} width={24} height={24} />
+          ),
         }}
       />
     </Navigator>
