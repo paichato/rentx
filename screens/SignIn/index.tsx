@@ -14,12 +14,14 @@ import { useTheme } from "styled-components";
 import Input from "../../components/Input";
 import PasswordInput from "../../components/PasswordInput";
 import * as Yup from "yup";
+import { useAuth } from "../../hooks/auth";
 
 export default function SignIn({ navigation }: any) {
   const theme = useTheme();
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const { signIn } = useAuth();
 
   const handleSignIn = async () => {
     try {
@@ -30,7 +32,10 @@ export default function SignIn({ navigation }: any) {
         password: Yup.string().required("A senha e obrigatoria"),
       });
       await schema.validate({ email, password });
-      Alert.alert("Tudo certo");
+      // Alert.alert("Tudo certo");
+      console.log({ email, password });
+
+      signIn({ email, password });
     } catch (error) {
       console.log(error);
       if (error instanceof Yup.ValidationError) {

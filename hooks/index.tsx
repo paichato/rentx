@@ -6,7 +6,7 @@ interface AppProviderProps {
 }
 
 const AppProvider = ({ children }: AppProviderProps) => {
-  return <AppProvider>{children}</AppProvider>;
+  return <AuthProvider>{children}</AuthProvider>;
 };
 
 export { AppProvider };

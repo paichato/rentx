@@ -33,7 +33,7 @@ export default function ImagesSlider({ imagesUrl }: Props) {
 
       <FlatList
         data={imagesUrl}
-        keyExtractor={(key) => key}
+        keyExtractor={(key) => String(key)}
         horizontal
         showsHorizontalScrollIndicator={false}
         onViewableItemsChanged={indexChanged.current}
@@ -41,7 +41,7 @@ export default function ImagesSlider({ imagesUrl }: Props) {
           <CarImageWrapper>
             <CarImage
               source={{
-                uri: item,
+                uri: item.photo,
               }}
             />
           </CarImageWrapper>

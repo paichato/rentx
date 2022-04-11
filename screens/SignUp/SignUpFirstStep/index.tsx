@@ -21,11 +21,15 @@ import {
   Title,
 } from "./styles";
 import * as Yup from "yup";
+import { useAuth } from "../../../hooks/auth";
 
 export default function SignUpFirstStep({ navigation }: any) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [driverLicense, setDriverLicense] = useState("");
+  const {user}=useAuth();
+  console.log(user);
+  
 
   const handleBack = () => {
     navigation.goBack();

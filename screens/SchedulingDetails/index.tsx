@@ -135,8 +135,8 @@ export default function SchedulingDetails({ navigation, route }: any) {
             <Name>{car.name}</Name>
           </Description>
           <Rent>
-            <Period>{car.rent.period}</Period>
-            <Price>{"R$" + car.rent.price}</Price>
+            <Period>{car?.period}</Period>
+            <Price>{"R$" + car.price}</Price>
           </Rent>
         </Details>
         <Acessories>
@@ -173,7 +173,7 @@ export default function SchedulingDetails({ navigation, route }: any) {
         <RentalPrice>
           <RentalPriceLabel>Total</RentalPriceLabel>
           <RentalPriceDetails>
-            <RentalPriceQuota>{`R$ ${car.rent.price} x${dates.length} diarias`}</RentalPriceQuota>
+            <RentalPriceQuota>{`R$ ${car.price} x${dates.length} diarias`}</RentalPriceQuota>
             <RentalPriceTotal>{"R$" + rentTotal}</RentalPriceTotal>
           </RentalPriceDetails>
         </RentalPrice>

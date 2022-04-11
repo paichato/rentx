@@ -51,6 +51,7 @@ export default function CarDetails({ navigation, route }: any) {
     scrollY.value = event.contentOffset.y;
     console.log(event.contentOffset.y);
   });
+  console.log(car);
 
   const headerStyleAnimation = useAnimatedStyle(() => {
     return {
@@ -126,8 +127,8 @@ export default function CarDetails({ navigation, route }: any) {
             <Name>{car.name}</Name>
           </Description>
           <Rent>
-            <Period>{car.rent.period}</Period>
-            <Price>{"R$" + car.rent.price}</Price>
+            <Period>{car.period}</Period>
+            <Price>{"R$" + car.price}</Price>
           </Rent>
         </Details>
         <Acessories>

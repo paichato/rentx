@@ -121,7 +121,7 @@ export default function Home({ navigation }: any) {
       api
         .get("/cars")
         .then((res) => {
-          // console.log(res.data);
+          console.log(res.data);
           setCars(res.data);
         })
         .catch((err) => console.log(err))

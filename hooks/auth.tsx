@@ -40,6 +40,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     });
 
     console.log(response.data);
+    const { token, user } = response.data;
+    setData({ token, user });
+    api.defaults.headers.authorization = `Bearer ${token}`;
   };
 
   return (

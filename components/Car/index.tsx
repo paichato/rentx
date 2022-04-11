@@ -32,18 +32,18 @@ interface Props extends TouchableOpacityProps {
 }
 
 export function Car({ data, ...rest }: Props) {
-  const MotorIcon = getAcessoryIcon(data.fuel_type);
+  const MotorIcon = getAcessoryIcon(data?.fuel_type);
 
   return (
     <Container {...rest}>
       <Details>
-        <Brand>{data.brand}</Brand>
-        <Name>{data.name}</Name>
+        <Brand>{data?.brand}</Brand>
+        <Name>{data?.name}</Name>
 
         <About>
           <Rent>
-            <Period>{`RS${data.rent.period}`}</Period>
-            <Price>{`RS${data.rent.price}`}</Price>
+            <Period>{`${data?.period}`}</Period>
+            <Price>{`RS${data?.price}`}</Price>
           </Rent>
 
           <Type>
@@ -56,7 +56,7 @@ export function Car({ data, ...rest }: Props) {
       <CarImage
         resizeMode="contain"
         source={{
-          uri: data.thumbnail,
+          uri: data?.thumbnail,
         }}
       />
     </Container>
