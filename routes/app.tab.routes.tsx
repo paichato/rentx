@@ -10,6 +10,7 @@ import SignIn from "../screens/SignIn";
 import SignUpFirstStep from "../screens/SignUp/SignUpFirstStep";
 import SignUpSecondStep from "../screens/SignUp/SignUpSecondStep";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { AppStackRoutes } from "./app.stack.routes";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -18,7 +19,7 @@ export function AppTabRoutes() {
     <Navigator screenOptions={{ headerShown: false }}>
       <Screen
         name="Home"
-        component={Home}
+        component={AppStackRoutes}
         options={{ gestureEnabled: false }}
       />
       <Screen name="Profile" component={SignUpFirstStep} />
