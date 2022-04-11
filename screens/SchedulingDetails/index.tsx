@@ -63,7 +63,7 @@ export default function SchedulingDetails({ navigation, route }: any) {
   const theme = useTheme();
   const { car } = route.params as Params;
   const { dates } = route.params as DatesProps;
-  const rentTotal = Number(dates.length * Number(car.rent.price));
+  const rentTotal = Number(dates.length * Number(car.price));
 
   const handleConfirm = async () => {
     setLoading(true);

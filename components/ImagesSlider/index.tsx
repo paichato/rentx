@@ -4,7 +4,10 @@ import { CarImage, CarImageWrapper, Container, ImageIndexes } from "./styles";
 // import { CarImage } from "../Car/styles";
 
 interface Props {
-  imagesUrl: string[];
+  imagesUrl: {
+    id: string;
+    photo: string;
+  }[];
 }
 
 interface ChangeImageProps {
@@ -19,21 +22,21 @@ export default function ImagesSlider({ imagesUrl }: Props) {
 
   const indexChanged = useRef((info: ChangeImageProps) => {
     console.log(info);
-    const index = info.viewableItems[0].index!;
+    const index = info.viewableItems[0]?.index!;
     setImageIndex(index);
   });
 
   return (
     <Container>
       <ImageIndexes>
-        {imagesUrl.map((_, index) => (
-          <Bullet key={String(index)} active={imageIndex === index} />
+        {imagesUrl.map((item, index) => (
+          <Bullet key={String(item.id)} active={imageIndex === index} />
         ))}
       </ImageIndexes>
 
       <FlatList
         data={imagesUrl}
-        keyExtractor={(key) => String(key)}
+        keyExtractor={(item) => String(item.id)}
         horizontal
         showsHorizontalScrollIndicator={false}
         onViewableItemsChanged={indexChanged.current}
