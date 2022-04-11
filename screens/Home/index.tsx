@@ -133,26 +133,24 @@ export default function Home({ navigation }: any) {
     getCars();
   }, []);
 
-  useEffect(() => {
-    function handleBack() {
-      if (navigation.isFocused()) {
-        return true;
-      } else {
-        return false;
-      }
-    }
+  // useEffect(() => {
+  //   function handleBack() {
+  //     if (navigation.isFocused()) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   }
 
-    const listener = BackHandler.addEventListener(
-      "hardwareBackPress",
-      handleBack
-    );
+  //   const listener = BackHandler.addEventListener(
+  //     "hardwareBackPress",
+  //     handleBack
+  //   );
 
-    return () =>
-      BackHandler.removeEventListener("hardwareBackPress", handleBack);
+  //   return () =>
+  //     BackHandler.removeEventListener("hardwareBackPress", handleBack);
 
-    // return () =>
-    //   BackHandler.removeEventListener("hardwareBackPress", () => false);
-  }, []);
+  // }, []);
 
   // if (loading) {
   //   return <Loader />;
