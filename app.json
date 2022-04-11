@@ -18,7 +18,13 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.marps.rentx",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.marps.rentx",
+      "versionCode": 1
     },
 
     "web": {
